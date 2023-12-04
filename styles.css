@@ -4,3 +4,18 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+/* FRAMEWORK */
+.background {
+    position: fixed;
+    top: 0;
+    bottom:0;
+    left: 0;
+    right: 0;
+    width: 100dvw;
+    height: 100dvh;
+    background-image: url("/images/background-fuji.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
