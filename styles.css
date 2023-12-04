@@ -12,12 +12,14 @@
 
     --h--header: 96px;
 
+    --z--bg: -10;
     --z--header: 10;
     --z--popup: 20;
 }
 
 /* FRAMEWORK */
 .background {
+    z-index: var(--z--bg);
     position: fixed;
     top: 0;
     bottom:0;
@@ -59,4 +61,10 @@ header {
     max-width: var(--screen--s);
     min-height: 100dvh;
     background: rgba(255,255,255, 0.7)!important;
+}
+footer {
+    max-width: var(--screen--s);
+    margin: 0 auto;
+    height: 320px;
+    background: rgba(55,55,255, 1)!important;
 }
