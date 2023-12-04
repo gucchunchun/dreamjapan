@@ -5,8 +5,21 @@
     box-sizing: border-box;
 }
 
+/* ROOT */
+:root {
+    --screen--s: 480px;
+    --screen--m: 768px;
+
+    --h--header: 96px;
+
+    --z--bg: -10;
+    --z--header: 10;
+    --z--popup: 20;
+}
+
 /* FRAMEWORK */
 .background {
+    z-index: var(--z--bg);
     position: fixed;
     top: 0;
     bottom:0;
@@ -18,4 +31,40 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+}
+.background__side--left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc((100% - var(--screen--s))/2);
+    height: 100%;
+}
+.background__side--right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: calc((100% - var(--screen--s))/2);
+    height: 100%;
+}
+header {
+    position: fixed;
+    z-index: var(--z--header);
+    top: 0;
+    left: 0;
+    width: 100dvw;
+    height: var(--h--header);
+    background: rgba(55,55,255, 1)!important;
+}
+.foreground {
+    position: relative;
+    margin: 0 auto;
+    max-width: var(--screen--s);
+    min-height: 100dvh;
+    background: rgba(255,255,255, 0.7)!important;
+}
+footer {
+    max-width: var(--screen--s);
+    margin: 0 auto;
+    height: 320px;
+    background: rgba(55,55,255, 1)!important;
 }
