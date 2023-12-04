@@ -25,6 +25,21 @@
     background-position: center;
     background-size: cover;
 }
+.background__side--left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc((100% - var(--screen--s))/2);
+    height: 100%;
+}
+.background__side--right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: calc((100% - var(--screen--s))/2);
+    height: 100%;
+}
+
 .foreground {
     position: relative;
     margin: 0 auto;
