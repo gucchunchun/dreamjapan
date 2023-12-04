@@ -18,7 +18,7 @@
 }
 
 /* FRAMEWORK */
-.background {
+.background--static {
     z-index: var(--z--bg);
     position: fixed;
     top: 0;
@@ -27,7 +27,7 @@
     right: 0;
     width: 100dvw;
     height: 100dvh;
-    background-image: url("/images/background-fuji.png");
+    background-image: url("/images/bg-jpwave.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -46,6 +46,25 @@
     width: calc((100% - var(--screen--s))/2);
     height: 100%;
 }
+
+.background--dynamic {
+    --size: auto 60%;
+    --position: bottom center;
+    --index: var(--z--bg);
+    z-index: var(--index);
+    position: fixed;
+    top: 0;
+    bottom:0;
+    left: 0;
+    right: 0;
+    width: 100dvw;
+    height: 100dvh;
+    background-image: url("/images/fuji.svg");
+    background-repeat: no-repeat;
+    background-position: var(--position);
+    background-size: var(--size);
+}
+
 header {
     position: fixed;
     z-index: var(--z--header);
@@ -53,18 +72,21 @@ header {
     left: 0;
     width: 100dvw;
     height: var(--h--header);
-    background: rgba(55,55,255, 1)!important;
+    border: solid 1px rgba(55,55,255, 1)!important;
 }
+
 .foreground {
     position: relative;
     margin: 0 auto;
     max-width: var(--screen--s);
     min-height: 100dvh;
-    background: rgba(255,255,255, 0.7)!important;
+    /* background: rgba(255,255,255, 0.7)!important; */
 }
+
 footer {
     max-width: var(--screen--s);
     margin: 0 auto;
     height: 320px;
-    background: rgba(55,55,255, 1)!important;
+    border: solid 1px rgba(55,55,255, 1)!important;
 }
+
