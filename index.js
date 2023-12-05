@@ -5,6 +5,7 @@ function toggleNavMenu() {
     }
     navToggleBtn.classList.toggle('active');
     navSmallScreen.classList.toggle('active');
+    navToggleBtn.ariaLabel = 'close navigation menu';
 }
 
 // GET DOM ELEMENT
