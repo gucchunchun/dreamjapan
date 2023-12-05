@@ -22,8 +22,8 @@
     <div class="background--dynamic">
       <div class="background--dynamic__fuji"></div>
     </div>
-    <header>
-      <div class="header__logo">
+    <!-- <header>
+      <div class="header__logo-wrap">
         <a href="/#home">
           <img
             class="logo logo-header"
@@ -47,7 +47,7 @@
       >
         <span class="hamburger__border"></span>
       </button>
-    </header>
+    </header> -->
     <nav id="navSmallScreen" class="nav nav--smallScreen">
       <ul class="nav--smallScreen__wrapper">
         <li>
@@ -100,9 +100,34 @@
         </li>
       </ul>
     </nav>
-    <main class="foreground">
-      <section id="home" class="section"></section>
-    </main>
+    <div class="foreground foreground--home">
+      <section id="home" class="section">
+        <div class="home__logo-wrap">
+          <img src="/images/logo.png" alt="logo" class="logo home__logo" />
+          <img
+            src="/images/dreamjapan.svg"
+            alt="title"
+            class="title home__title"
+          />
+        </div>
+        <div class="home__text-wrap">
+          <h2 class="section__title">Japanese dream festival</h2>
+          <p class="text--l detail__date">16 DEC 13:00 - 17:00</p>
+          <p>
+            <a class="text--m detail__place" href="/#venue">
+              @33 Wadeson St, E2 9DR
+            </a>
+          </p>
+          <a
+            class="ticket button"
+            href="https://www.eventbrite.com/e/dream-japanjapanese-dream-festival-tickets-747954621407?aff=oddtdtcreator"
+          >
+            <span> get ticket</span>
+          </a>
+        </div>
+      </section>
+    </div>
+    <main class="foreground foreground--main"></main>
     <footer></footer>
     <script src="./index.js" defer></script>
   </body>
