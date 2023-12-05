@@ -35,6 +35,64 @@ ul, ol {
 
 }
 
+/* ANIMATION */
+@keyframes hamburgerAfter {
+    0% {
+        top: 200%;
+        transform: rotate(0);
+    }
+    50% {
+        top: 0;
+        transform: rotate(0);
+    }
+    100% {
+        top: 0;
+        transform: rotate(45deg) ;
+    }
+}
+@keyframes hamburgerAfter-reverse {
+    0% {
+        top: 0;
+        transform: rotate(45deg);
+    }
+    50% {
+        top: 0;
+        transform: rotate(0);
+    }
+    100% {
+        top: 200%;
+        transform: rotate(0) ;
+    }
+}
+@keyframes hamburgerBefore {
+    0% {
+        top: -200%;
+        transform: rotate(0);
+    }
+    50% {
+        top: 0;
+        transform: rotate(0);
+    }
+    100% {
+        top: 0;
+        transform: rotate(-45deg);
+    }
+}
+@keyframes hamburgerBefore-reverse {
+    0% {
+        top: 0;
+        transform: rotate(-45deg);
+    }
+    50% {
+        top: 0;
+        transform: rotate(0);
+    }
+    100% {
+        top: -200%;
+        transform: rotate(0);
+    }
+}
+
 /* FRAMEWORK */
 .background--static {
     z-index: var(--z--bg);
@@ -122,29 +180,36 @@ footer {
     width: 40px;
     height: 40px;
 }
-.hamburger__border {
+.hamburger__border,
+.hamburger__border::after, 
+.hamburger__border::before {
     position: absolute;
+    background-color: rgba(var(--c--text), 0.8);
+    border-radius: 5px;
+}
+.hamburger__border {
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
     width: 80%;
     aspect-ratio: 6 / 1;
-    background-color: rgba(var(--c--text), 0.7);
-    border-radius: 5px;
 }
 .hamburger__border::after, .hamburger__border::before {
     --top: 200%;
     content: '';
-    position: absolute;
     left: 0;
     top: var(--top);
     width: 100%;
     height: 100%;
-    background-color: rgba(var(--c--text), 0.7);
-    border-radius: 5px;
 }
 .hamburger__border::before {
     --top: -200%;
+}
+.hamburger.animated .hamburger__border::after{
+    animation: hamburgerAfter-reverse 0.25s;
+}
+.hamburger.animated .hamburger__border::before{
+    animation: hamburgerBefore-reverse 0.25s;
 }
 .hamburger:hover .hamburger__border, 
 .hamburger:hover .hamburger__border::after,
@@ -153,7 +218,7 @@ footer {
 }
 
 .hamburger.active .hamburger__border{
-    background: transparent;
+    background-color: rgba(var(--c--text), 0);
 }
 .hamburger.active .hamburger__border:after, .hamburger.active .hamburger__border:before {
     --angle: 45deg;
@@ -162,6 +227,12 @@ footer {
 }
 .hamburger.active .hamburger__border:before {
     --angle: -45deg;
+}
+.hamburger.animated.active .hamburger__border:after{
+    animation: hamburgerAfter 0.25s;
+}
+.hamburger.animated.active .hamburger__border:before {
+    animation: hamburgerBefore 0.25s;
 }
 
 .content-change-on-hover {
@@ -242,7 +313,7 @@ footer {
     background-color: rgba(var(--c--accent), 1);
     border-radius: 50%;
     overflow: hidden;
-    /* display: none; */
+    display: none;
 }
 .nav--smallScreen.active {
     display: block;
