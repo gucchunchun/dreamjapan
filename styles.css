@@ -33,6 +33,7 @@ ul, ol {
     --c--text: 25, 47, 96;
     --c--accent: 172, 39, 24;
 
+    --p--base: 8px;
 }
 
 /* ANIMATION */
@@ -141,7 +142,7 @@ header {
     left: 0;
     width: 100dvw;
     height: var(--h--header);
-    padding: 8px;
+    padding: var(--p--base);
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -173,6 +174,12 @@ footer {
 
 .title {
     display: inline-block;
+}
+
+.section {
+    width: 100%;
+    padding-top: calc(var(--p--base)+var(--h--header));
+    padding-inline: var(--p--base);
 }
 
 .hamburger {
@@ -330,4 +337,10 @@ footer {
     padding: 0.5rem;
     margin-bottom: 0;
     text-align: center;
+}
+
+/* HOME */
+.section#home {
+    height: 100dvh;
+    padding-top: var(--p--base);
 }
