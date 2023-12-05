@@ -5,9 +5,22 @@
     box-sizing: border-box;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    background: none;
+    border: none;
+}
+
+ul, ol {
+    list-style-type: none;
+}
+
 /* ROOT */
 :root {
-    --height--screen: 
     --screen--s: 480px;
     --screen--m: 768px;
 
@@ -16,6 +29,8 @@
     --z--bg: -10;
     --z--header: 10;
     --z--popup: 20;
+
+    --c--text: 25, 47, 96;
 }
 
 /* FRAMEWORK */
@@ -66,7 +81,13 @@ header {
     left: 0;
     width: 100dvw;
     height: var(--h--header);
-    border: solid 1px rgba(55,55,255, 1)!important;
+    padding: 8px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    /* border: solid 1px rgba(55,55,255, 1)!important; */
 }
 
 .foreground {
@@ -85,8 +106,64 @@ footer {
     border: solid 1px rgba(55,55,255, 1)!important;
 }
 
-/* BACKGROUND STATIC */
+/* COMPONENT */
+.logo {
+    display: inline-block;
+}
 
+.title {
+    display: inline-block;
+}
+
+.hamburger {
+    position: relative;
+    width: 40px;
+    height: 40px;
+}
+.hamburger__border {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 80%;
+    aspect-ratio: 6 / 1;
+    background-color: rgba(var(--c--text), 0.7);
+    border-radius: 5px;
+}
+.hamburger__border::after, .hamburger__border::before {
+    --top: 200%;
+    content: '';
+    position: absolute;
+    left: 0;
+    top: var(--top);
+    width: 100%;
+    height: 100%;
+    background-color: rgba(var(--c--text), 0.7);
+    border-radius: 5px;
+}
+.hamburger__border::before {
+    --top: -200%;
+}
+.hamburger:hover .hamburger__border, 
+.hamburger:hover .hamburger__border::after,
+.hamburger:hover .hamburger__border::before {
+    background-color: rgba(var(--c--text), 1);
+}
+
+.hamburger.active .hamburger__border{
+    background: transparent;
+}
+.hamburger.active .hamburger__border:after, .hamburger.active .hamburger__border:before {
+    --angle: 45deg;
+    top: 0;
+    transform: rotate(var(--angle));
+}
+.hamburger.active .hamburger__border:before {
+    --angle: -45deg;
+}
+
+
+/* BACKGROUND STATIC */
 
 /* BACKGROUND DYNAMIC */
 .background--dynamic__fuji {
@@ -108,4 +185,17 @@ footer {
     background-repeat: no-repeat;
     background-size: contain;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* HEADER */
+.header__logo {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: fit-content;
+    height: 100%;
+}
+.logo-header, .title-header {
+    width: auto;
+    height: 100%;
 }
