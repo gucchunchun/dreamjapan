@@ -31,9 +31,12 @@ ul, ol {
     --z--popup: 20;
 
     --c--text: 25, 47, 96;
+    --c--bg: 248, 244, 230;
     --c--accent: 172, 39, 24;
+    --c--primary: 132, 185, 203;
 
     --p--base: 8px;
+    --m--section: 32px;
 }
 
 /* ANIMATION */
@@ -190,6 +193,11 @@ footer {
     width: 100%;
     padding-top: calc(var(--p--base)+var(--h--header));
     padding-inline: var(--p--base);
+}
+
+.ticket {
+    padding: var(--p--base);
+    background-color: rgba(var(--c--bg), 1);
 }
 
 .hamburger {
@@ -355,25 +363,28 @@ footer {
     max-width: var(--screen--s);
     height: 100dvh;
     margin: 0 auto;
-    padding: var(--p--base);
+    padding-block: var(--m--section);
+    padding-inline: var(--p--base);
 }
 .home__logo-wrap {
     width: 100%;
-    height: 65%;
+    height: 70%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 .home__text-wrap {
     width: 100%;
-    height: 35%;
+    height: 30%;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
 }
 .home__logo {
-    width: 60%;
+    height: 40%;
 }
 .home__title {
-    width: 90%;
+    max-width: 90%;
+    height: 60%;
 }
