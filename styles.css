@@ -7,6 +7,7 @@
 
 /* ROOT */
 :root {
+    --height--screen: 
     --screen--s: 480px;
     --screen--m: 768px;
 
@@ -27,7 +28,7 @@
     right: 0;
     width: 100dvw;
     height: 100dvh;
-    background-image: url("/images/bg-jpwave.svg");
+    background-image: url("/images/bg-wave.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -48,10 +49,6 @@
 }
 
 .background--dynamic {
-    --size: auto 60%;
-    --position: bottom center;
-    --index: var(--z--bg);
-    z-index: var(--index);
     position: fixed;
     top: 0;
     bottom:0;
@@ -59,10 +56,7 @@
     right: 0;
     width: 100dvw;
     height: 100dvh;
-    background-image: url("/images/fuji.svg");
-    background-repeat: no-repeat;
-    background-position: var(--position);
-    background-size: var(--size);
+    transform: scale(1);
 }
 
 header {
@@ -84,9 +78,33 @@ header {
 }
 
 footer {
+    position: relative;
     max-width: var(--screen--s);
     margin: 0 auto;
     height: 320px;
     border: solid 1px rgba(55,55,255, 1)!important;
 }
 
+/* BACKGROUND STATIC */
+
+
+/* BACKGROUND DYNAMIC */
+.background--dynamic__fuji {
+    --index: var(--z--bg);
+    --width: 200%;
+    --min-width: calc(var(--screen--m)*2);
+    --top: 50%;
+    --left: 50%;
+    z-index: var(--index);
+    position: absolute;
+    transform: translateX(-50%);
+    top: var(--top);
+    left: var(--left);
+    width: var(--width);
+    min-width: var(--min-width);
+    height: 100%;
+    background-image: url("/images/fuji.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
