@@ -15,6 +15,7 @@ navToggleBtn.addEventListener('click', toggleNavMenu);
 
 
 // To manage animation on elements' intersection with user screen
+const body = document.querySelector('body');
 const header = document.querySelector('.header');
 const home = document.querySelector('.foreground--home');
 const main = document.querySelector('.foreground--main');
@@ -34,7 +35,7 @@ function buildThresholdList() {
 
 // set timing of header appearance & home disappearance
 let windowHeight = window.innerHeight;
-let optionMargin = `0px 0px ${Math.round(-windowHeight/2)}px 0px`;
+let optionMargin = `0px 0px ${Math.round(-windowHeight/2)-50}px 0px`;
 
 let scrollMainOptions = {
     rootMargin: optionMargin,
@@ -47,28 +48,34 @@ const scrollOptions = {
 const scrollMainCallback = (entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-            home.classList.add('hide');
+            body.classList.add('main');
+            body.classList.remove('home');
             header.classList.add('active');
         } else {
-            entry.target.classList.remove('active');
-            home.classList.remove('hide');
+            body.classList.add('home');
+            body.classList.remove('main');
             header.classList.remove('active');
         }
     })
 }
-
+let isAbout = false;
 const scrollCallback = (entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('active');
             const ratio = Math.round(entry.intersectionRatio*100)/100;
-            if(entry.target.id=='about') {
-                home.style.setProperty('--scroll', ratio);
+            if(0.5<=ratio){
+                body.classList.add(entry.target.id);
+                body.style.setProperty('--scroll', ratio);
+            }else {
+                body.classList.remove(entry.target.id);
             }
-            entry.target.style.setProperty('-scroll', ratio);
+            entry.target.style.setProperty('--scroll', ratio);
         } else {
             entry.target.classList.remove('active');
+            if(entry.target.id=='about') {
+                home.classList.remove('about');
+            }
         }
     })
 }
@@ -84,7 +91,7 @@ sections.forEach(elem => {
 
 window.addEventListener('resize', ()=>{
     windowHeight = window.innerHeight;
-    optionMargin = `0px 0px ${Math.round(-windowHeight/2)}px 0px`;
+    optionMargin = `0px 0px ${Math.round(-windowHeight/2)-50}px 0px`;
     scrollMainOptions = {
         rootMargin: optionMargin,
         threshold: buildThresholdList()
