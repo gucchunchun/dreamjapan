@@ -351,13 +351,14 @@ footer {
 
 /* HOME */
 .foreground--home {
-    --top: 0;
+    --scroll: 0;
     position: fixed;
-    top: var(--top);
+    top: 0;
     left: 0;
     height: 100dvh;
 }
-.section#home {
+.home__ctr {
+    position: relative;
     width: 100%;
     max-width: var(--screen--s);
     height: 100dvh;
@@ -366,28 +367,42 @@ footer {
     padding-inline: var(--p--base);
 }
 .home__logo-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 70%;
+    height: 65%;
+    padding-top: var(--m--section);
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 .home__text-wrap {
+    --translate: calc(var(--scroll)*100);
+    position: absolute;
+    transform: translateY(var(--translate));
+    bottom: var(--m--section);
+    left: 0;
     width: 100%;
     height: 30%;
+    padding-bottom: var(--m--section);
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    transition: all 0.5s;
 }
 .home__logo {
     height: 40%;
+    opacity: calc(1 - var(--scroll)*3);
 }
 .home__title {
     max-width: 90%;
     height: 60%;
 }
-
+.foreground--home.hide .home__text-wrap {
+    transform: translateY(400%);
+}
 
 /* MAIN */
 .foreground--main {
