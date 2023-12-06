@@ -14,7 +14,7 @@
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body class="">
     <div class="background--static">
       <div class="background__side--left"></div>
       <div class="background__side--right"></div>
@@ -22,7 +22,7 @@
     <div class="background--dynamic">
       <div class="background--dynamic__fuji"></div>
     </div>
-    <!-- <header>
+    <header class="header">
       <div class="header__logo-wrap">
         <a href="/#home">
           <img
@@ -47,7 +47,7 @@
       >
         <span class="hamburger__border"></span>
       </button>
-    </header> -->
+    </header>
     <nav id="navSmallScreen" class="nav nav--smallScreen">
       <ul class="nav--smallScreen__wrapper">
         <li>
@@ -101,7 +101,7 @@
       </ul>
     </nav>
     <div class="foreground foreground--home">
-      <section id="home" class="section">
+      <section id="home" class="home__ctr">
         <div class="home__logo-wrap">
           <img src="/images/logo.png" alt="logo" class="logo home__logo" />
           <img
@@ -111,7 +111,6 @@
           />
         </div>
         <div class="home__text-wrap">
-          <h2 class="section__title">Japanese dream festival</h2>
           <p class="text--l detail__date">16 DEC 13:00 - 17:00</p>
           <p>
             <a class="text--m detail__place" href="/#venue">
@@ -127,7 +126,17 @@
         </div>
       </section>
     </div>
-    <main class="foreground foreground--main"></main>
+    <main class="foreground foreground--main">
+      <section id="about" class="section"></section>
+      <section id="logoMeaning" class="section"></section>
+      <section id="dreamers" class="section"></section>
+      <section id="others" class="section"></section>
+      <section id="venue" class="section"></section>
+      <section id="contact" class="section"></section>
+    </main>
+    <div class="foreground foreground--top">
+      <div class="circle"></div>
+    </div>
     <footer></footer>
     <script src="./index.js" defer></script>
   </body>
