@@ -35,11 +35,11 @@ function buildThresholdList() {
 
 // set timing of header appearance & home disappearance
 let windowHeight = window.innerHeight;
-let optionMargin = `0px 0px ${Math.round(-windowHeight/2)-50}px 0px`;
+// -100 = to handle the difference of intersections timing of those observers below
+let optionMargin = `0px 0px ${Math.round(-windowHeight/2)-100}px 0px`;
 
 let scrollMainOptions = {
     rootMargin: optionMargin,
-    threshold: buildThresholdList()
 };
 const scrollOptions = {
     threshold: buildThresholdList()
@@ -91,7 +91,7 @@ sections.forEach(elem => {
 
 window.addEventListener('resize', ()=>{
     windowHeight = window.innerHeight;
-    optionMargin = `0px 0px ${Math.round(-windowHeight/2)-50}px 0px`;
+    optionMargin = `0px 0px ${Math.round(-windowHeight/2)-100}px 0px`;
     scrollMainOptions = {
         rootMargin: optionMargin,
         threshold: buildThresholdList()
