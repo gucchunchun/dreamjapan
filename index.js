@@ -14,22 +14,14 @@ function toggleNavMenu() {
 navToggleBtn.addEventListener('click', toggleNavMenu);
 
 
-// to manage animation on elements' intersection with user screen
+// To manage animation on elements' intersection with user screen
 const header = document.querySelector('.header');
 const home = document.querySelector('.foreground--home');
 const main = document.querySelector('.foreground--main');
 const sections = document.querySelectorAll('.section');
 
+// set number of times
 const NUM_STEPS = 100;
-let windowHeight = window.innerHeight;
-let optionMargin = `0px 0px ${Math.round(-windowHeight/2)}px 0px`;
-console.log(optionMargin);
-
-window.addEventListener('resize', ()=>{
-    windowHeight = window.innerHeight;
-    optionMargin = `0px 0px ${Math.round(-windowHeight/2)}px 0px`;
-})
-
 function buildThresholdList() {
     let thresholds = [];
    
@@ -40,8 +32,11 @@ function buildThresholdList() {
     return thresholds;
 }
 
+// set timing of header appearance & home disappearance
+let windowHeight = window.innerHeight;
+let optionMargin = `0px 0px ${Math.round(-windowHeight/2)}px 0px`;
 
-const scrollMainOptions = {
+let scrollMainOptions = {
     rootMargin: optionMargin,
     threshold: buildThresholdList()
 };
@@ -78,11 +73,22 @@ const scrollCallback = (entries) => {
     })
 }
 
-const scrollMainObserver = new IntersectionObserver(scrollMainCallback, scrollMainOptions);
+let scrollMainObserver = new IntersectionObserver(scrollMainCallback, scrollMainOptions);
 const scrollSectionObserver = new IntersectionObserver(scrollCallback, scrollOptions);
 
 // scrollMainObserver.root.style.border = "2px solid #44aa44";
 scrollMainObserver.observe(main);
 sections.forEach(elem => {
     scrollSectionObserver.observe(elem)
+})
+
+window.addEventListener('resize', ()=>{
+    windowHeight = window.innerHeight;
+    optionMargin = `0px 0px ${Math.round(-windowHeight/2)}px 0px`;
+    scrollMainOptions = {
+        rootMargin: optionMargin,
+        threshold: buildThresholdList()
+    };
+    scrollMainObserver = new IntersectionObserver(scrollMainCallback, scrollMainOptions);
+    scrollMainObserver.observe(main);
 })
