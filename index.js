@@ -62,20 +62,18 @@ let isAbout = false;
 const scrollCallback = (entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.classList.add('active');
             const ratio = Math.round(entry.intersectionRatio*100)/100;
-            if(0.5<=ratio){
+            if(0.5<ratio){
+                entry.target.classList.add('active');
                 body.classList.add(entry.target.id);
                 body.style.setProperty('--scroll', ratio);
             }else {
+                entry.target.classList.remove('active');
                 body.classList.remove(entry.target.id);
             }
             entry.target.style.setProperty('--scroll', ratio);
         } else {
             entry.target.classList.remove('active');
-            if(entry.target.id=='about') {
-                home.classList.remove('about');
-            }
         }
     })
 }

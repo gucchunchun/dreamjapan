@@ -176,6 +176,14 @@ footer {
     padding-inline: var(--p--base);
     border: solid 1px rgba(55,55,255, 1)!important;
 }
+.section__title {
+    position: fixed;
+    top: var(--h--header);
+    opacity: 0;
+}
+.active .section__title {
+    opacity: 1;
+}
 
 .ticket {
     padding: var(--p--base);
@@ -516,6 +524,7 @@ footer {
     display: block;
     position: absolute;
     bottom: 0;
+    height: calc(100% - var(--h--header) - var(--f-size--xl));
 }
 .main > * .home__title {
     display: none;
@@ -524,11 +533,13 @@ footer {
 
 /* MAIN */
 .foreground--main {
+    z-index: var(--z--base);
     position: relative;
     max-width: var(--screen--s);
     margin: 0 auto;
     margin-top: 100dvh;
 }
+
 
 /* DECORATOR */
 .foreground--top {
