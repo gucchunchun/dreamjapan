@@ -48,7 +48,6 @@ const scrollOptions = {
 const scrollMainCallback = (entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            body.classList.remove('home');
             header.classList.add('active');
         } else {
             body.classList.add('home');
@@ -63,6 +62,7 @@ const scrollCallback = (entries) => {
             const ratio = Math.round(entry.intersectionRatio*100)/100;
             if(0.5<ratio){
                 entry.target.classList.add('active');
+                body.classList.remove('home');
                 body.classList.add(entry.target.id);
                 body.style.setProperty('--scroll', ratio);
             }else {

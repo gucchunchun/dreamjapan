@@ -576,7 +576,21 @@ footer {
 .active .about__content--about {
     transform: scale(1) translateX(-50%);
 }
-
+.logo-about {
+    position: fixed;
+    transform: scale(1) translate(-50%);
+    bottom: 50%;
+    left: 50%;
+    width: auto;
+    height: calc(50dvh - var(--h--header) - var(--f-size--xl) - var(--p--base));
+}
+.about__content--logo {
+    position: fixed;
+    transform: scale(1) translateX(-50%);
+    top: calc(50% + var(--p--base));
+    left: 50%;
+    height: calc(50dvh - var(--m--section));
+}
 /* DECORATOR */
 .foreground--top {
     position: fixed;
