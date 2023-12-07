@@ -1,4 +1,4 @@
-// to toggle navigation menu
+// To toggle navigation menu
 const navToggleBtn = document.querySelector('#navToggleBtn');
 const navSmallScreen = document.querySelector('#navSmallScreen');
 
@@ -13,6 +13,10 @@ function toggleNavMenu() {
 
 navToggleBtn.addEventListener('click', toggleNavMenu);
 
+// To scroll to Home Page(fixed, scrollTo)
+function ScrollToHomePage() {
+    window.scrollTo(0, 0);
+}
 
 // To manage animation on elements' intersection with user screen
 const body = document.querySelector('body');
