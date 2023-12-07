@@ -36,7 +36,7 @@ function buildThresholdList() {
 // set timing of header appearance & home disappearance
 let windowHeight = window.innerHeight;
 // -100 = to handle the difference of intersections timing of those observers below
-let optionMargin = `0px 0px ${Math.round(-windowHeight/2)-100}px 0px`;
+let optionMargin = `0px 0px ${Math.round(-windowHeight/2)}px 0px`;
 
 let scrollMainOptions = {
     rootMargin: optionMargin,
@@ -48,12 +48,9 @@ const scrollOptions = {
 const scrollMainCallback = (entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            body.classList.add('main');
-            body.classList.remove('home');
             header.classList.add('active');
         } else {
             body.classList.add('home');
-            body.classList.remove('main');
             header.classList.remove('active');
         }
     })
@@ -62,20 +59,26 @@ let isAbout = false;
 const scrollCallback = (entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.classList.add('active');
             const ratio = Math.round(entry.intersectionRatio*100)/100;
-            if(0.5<=ratio){
+            if(entry.target.id == 'about') {
+                if(entry.intersectionRect.bottom < windowHeight) {
+                    body.classList.add('logo-meaning');
+                }else {
+                    body.classList.remove('logo-meaning');
+                }
+            }
+            if(0.5<ratio){
+                entry.target.classList.add('active');
+                body.classList.remove('home');
                 body.classList.add(entry.target.id);
                 body.style.setProperty('--scroll', ratio);
             }else {
+                entry.target.classList.remove('active');
                 body.classList.remove(entry.target.id);
             }
             entry.target.style.setProperty('--scroll', ratio);
         } else {
             entry.target.classList.remove('active');
-            if(entry.target.id=='about') {
-                home.classList.remove('about');
-            }
         }
     })
 }
@@ -91,7 +94,7 @@ sections.forEach(elem => {
 
 window.addEventListener('resize', ()=>{
     windowHeight = window.innerHeight;
-    optionMargin = `0px 0px ${Math.round(-windowHeight/2)-100}px 0px`;
+    optionMargin = `0px 0px ${Math.round(-windowHeight/2)}px 0px`;
     scrollMainOptions = {
         rootMargin: optionMargin,
         threshold: buildThresholdList()
