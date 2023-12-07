@@ -11,6 +11,7 @@
     --z--base: 5;
     --z--header: 10;
     --z--popup: 20;
+    --z--top: 30;
 
     --c--text: 25, 47, 96;
     --c--bg: 248, 244, 230;
@@ -31,6 +32,7 @@
 
     --duration--landing: 2s;
     --duration--base: 0.5s;
+    --duration--nav: 1s
 }
 
 /* RESET */
@@ -59,7 +61,7 @@ ul, ol {
 
 p {
     font-size: var(--f-size--text);
-    line-height: calc(var(--f-size--text)*1.5);
+    line-height: calc(var(--f-size--text)*1);
 }
 p::first-letter {
     text-transform: uppercase;
@@ -148,6 +150,10 @@ p, h1, h2, h3, h4 {
     width: 100%;
 }
 
+body:has(.nav--smallScreen.active) .foreground {
+    display: none;
+}
+
 footer {
     position: relative;
     max-width: var(--screen--s);
@@ -164,10 +170,7 @@ footer {
 .title {
     display: inline-block;
 }
-.title__img {
-    max-width: 100%;
-    max-height: 100%;
-}
+
 .title__hidden {
     display: none;
 }
@@ -337,31 +340,28 @@ footer {
 .background--dynamic {
     z-index: var(--z--base);
     animation: landing-dynamic var(--duration--landing);
+    pointer-events: none;
 }
 .background--dynamic__fuji {
-    --index: var(--z--bg);
-    --width: 150%;
-    --min-width: calc(var(--screen--m)*1.5);
-    --top: 50%;
-    --left: 50%;
-    z-index: var(--index);
+    z-index: var(--z--bg);
     position: absolute;
     transform: translateX(-50%);
-    top: var(--top);
-    left: var(--left);
-    width: var(--width);
-    min-width: var(--min-width);
-    height: 100%;
+    bottom: 0%;
+    left: 50%;
+    width: auto;
+    min-width: calc(var(--screen--m)*1.5);
+    height: 50%;
     background-image: url("/images/fuji.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
-    
 }
-
+body:has(.nav--smallScreen.active) .background--dynamic {
+    z-index: var(--z--top);
+}
 /* HEADER */
-.header.active {
+.header.active,
+body:has(.nav--smallScreen.active) .header {
     transform: translateY(0%);
 }
 .header__logo-wrap {
@@ -371,44 +371,78 @@ footer {
     width: fit-content;
     height: 100%;
 }
-.logo-header, .title-header {
+.logo--header, .title--header {
     width: auto;
     height: 100%;
 }
+.title__img {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+}
 
 /* NAV */
+@keyframes smallNav-opening {
+	0% {
+		transform: rotate(-20deg) translateX(-150%) translateY(50%) rotate(20deg);
+	}
+    80% {
+		transform: rotate(0deg) translateX(-50%) translateY(var(--h--header)) rotate(0deg);
+	}
+}
+@keyframes smallNavList-opening {
+    0% {
+		transform: scale(0);
+	}
+    80% {
+		transform: scale(0);
+	}
+    100% {
+		transform: scale(1);
+	}
+}
+
 .nav-list {
     display: inline-block;
 }
 .nav--smallScreen {
     z-index: var(--z--popup);
     position: fixed;
-    transform: translateX(-50%) translateY(-50%);
-    top: 50%;
+    transform: translateX(-50%) translateY(var(--h--header));
+    transform-origin: 0;
+    top:0;
     left: 50%;
-    width: 80%;
-    max-width: var(--screen--s);
+    height: 50%;
     aspect-ratio: 1;
     background-color: rgba(var(--c--accent), 1);
     border-radius: 50%;
     overflow: hidden;
     display: none;
 }
-.nav--smallScreen.active {
-    display: block;
-}
 .nav--smallScreen__wrapper {
+    transform: scale(0);
     width: 100%;
-    height: 100%;
+    height: calc(100% - var(--h--header));
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
 }
-.nav--smallScreen .nav-list {
+.nav-list {
     width: 100%;
-    padding: 0.5rem;
     margin-bottom: 0;
     text-align: center;
+    color: rgba(var(--c--bg), 1);
+}
+.nav--smallScreen.active {
+    z-index: var(--z--bg);
+    display: block;
+    animation: smallNav-opening var(--duration--nav) ease-out;
+}
+.nav--smallScreen.active .nav--smallScreen__wrapper {
+    transform: scale(1);
+    animation: smallNavList-opening var(--duration--nav) ease-out;
 }
 
 /* HOME */
@@ -620,4 +654,9 @@ footer {
     top: 0;
     left: 0;
     height: 100dvh;
+}
+
+/* FOOTER */
+body:has(.nav--smallScreen.active) footer {
+    display: none;
 }

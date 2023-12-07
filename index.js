@@ -1,18 +1,33 @@
-// to toggle navigation menu
+// To toggle navigation menu
 const navToggleBtn = document.querySelector('#navToggleBtn');
 const navSmallScreen = document.querySelector('#navSmallScreen');
+const navSmallLists = document.querySelectorAll('.nav-list--small');
 
-function toggleNavMenu() {
-    if(!navToggleBtn.classList.contains('animated')){
-        navToggleBtn.classList.add('animated');
-    }
-    navToggleBtn.classList.toggle('active');
-    navSmallScreen.classList.toggle('active');
+function openNavMenu() {
+    navToggleBtn.classList.add('animated');
+    navToggleBtn.classList.add('active');
+    navSmallScreen.classList.add('active');
     navToggleBtn.ariaLabel = 'close navigation menu';
+    navToggleBtn.removeEventListener('click', openNavMenu);
+    navToggleBtn.addEventListener('click', closeNavMenu);
+    navSmallLists.forEach(list => list.addEventListener('click', closeNavMenu));
+}
+function closeNavMenu() {
+    navToggleBtn.classList.remove('animated');
+    navToggleBtn.classList.remove('active');
+    navSmallScreen.classList.remove('active');
+    navToggleBtn.ariaLabel = 'open navigation menu';
+    navToggleBtn.removeEventListener('click', closeNavMenu);
+    navToggleBtn.addEventListener('click', openNavMenu);
+    navSmallLists.forEach(list => list.removeEventListener('click', closeNavMenu));
 }
 
-navToggleBtn.addEventListener('click', toggleNavMenu);
+navToggleBtn.addEventListener('click', openNavMenu);
 
+// To scroll to Home Page(fixed, scrollTo)
+function ScrollToHomePage() {
+    window.scrollTo(0, 0);
+}
 
 // To manage animation on elements' intersection with user screen
 const body = document.querySelector('body');
