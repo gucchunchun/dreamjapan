@@ -60,6 +60,13 @@ const scrollCallback = (entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             const ratio = Math.round(entry.intersectionRatio*100)/100;
+            if(entry.target.id == 'about') {
+                if(entry.intersectionRect.bottom < windowHeight) {
+                    body.classList.add('logo-meaning');
+                }else {
+                    body.classList.remove('logo-meaning');
+                }
+            }
             if(0.5<ratio){
                 entry.target.classList.add('active');
                 body.classList.remove('home');
