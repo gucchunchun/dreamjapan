@@ -35,7 +35,7 @@ const header = document.querySelector('.header');
 const home = document.querySelector('.foreground--home');
 const main = document.querySelector('.foreground--main');
 const sections = document.querySelectorAll('.section');
-const dreamersCard = document.querySelectorAll('.dreamers__card');
+const dreamersCards = document.querySelectorAll('.dreamers__card');
 
 // set number of times
 const NUM_STEPS = 100;
@@ -54,9 +54,9 @@ let windowHeight = window.innerHeight;
 // -100 = to handle the difference of intersections timing of those observers below
 let optionMargin = `0px 0px ${Math.round(-windowHeight/2)}px 0px`;
 
-// calculate the number of dreamersCard
-const numberOfDreamersCard = dreamersCard.length;
-const ratioPerCard = 1 / numberOfDreamersCard;
+// calculate the number of dreamersCards
+const numberOfDreamersCards = dreamersCards.length;
+const ratioPerCard = 1 / numberOfDreamersCards;
 
 let scrollMainOptions = {
     rootMargin: optionMargin,
@@ -100,27 +100,26 @@ const scrollCallback = (entries) => {
             }
             if(entry.target.id == 'dreamers') {
                 if(entry.intersectionRect.bottom < windowHeight) {
-                    for(let i=0 ; i < numberOfDreamersCard ; i++) {
-                        let criteria = i * ratioPerCard;
-                        console.log(criteria)
-                        if(criteria<=0.5) {
-                            continue
-                        }else if(ratio < criteria) {
-                            dreamersCard[i].classList.add('active');
-                        }else if(criteria < ratio){
-                            dreamersCard[i].classList.remove('active');
+                    for(let i=0 ; i < numberOfDreamersCards ; i++) {
+                        let criteria = (numberOfDreamersCards - i) * ratioPerCard;
+                        if(0.5 < criteria) {
+                            continue;
+                        }else if(ratio < (criteria + 0.47)) {
+                            dreamersCards[i].classList.add('active');
+                        } else if((criteria + 0.47) < ratio){
+                            dreamersCards[i].classList.remove('active');
                         }
                     }
                 }else {
                     if(ratio<0.5) {
-                        dreamersCard[0].classList.remove('active');
+                        dreamersCards[0].classList.remove('active');
                     }else {
-                        for(let i=0 ; i < numberOfDreamersCard ; i++) {
+                        for(let i=0 ; i < numberOfDreamersCards ; i++) {
                             let criteria = i * ratioPerCard;
                             if(criteria < (ratio - 0.47)) {
-                                dreamersCard[i].classList.add('active');
+                                dreamersCards[i].classList.add('active');
                             } else if((ratio - 0.47) < criteria){
-                                dreamersCard[i].classList.remove('active');
+                                dreamersCards[i].classList.remove('active');
                             }
                         }
                     }
@@ -151,3 +150,9 @@ window.addEventListener('resize', ()=>{
     scrollMainObserver = new IntersectionObserver(scrollMainCallback, scrollMainOptions);
     scrollMainObserver.observe(main);
 })
+
+// dreamers card angle
+let angle = -5;
+for(let i = 0; i < numberOfDreamersCards; i++) {
+    dreamersCards[i].style = `--angle: ${angle + Math.floor(Math.random()* 9) -7}deg`;
+}
