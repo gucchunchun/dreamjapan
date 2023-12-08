@@ -607,6 +607,10 @@ body:has(.nav--smallScreen.active) .header {
     transform: scale(1) translateX(-50%);
 }
 .section__content {
+    position: fixed;
+    transform: translateX(-50%);
+    top: 0;
+    left: 50%;
     width: 90%;
     max-width: calc(var(--screen--s) * 0.9);
     margin: 0 auto;
@@ -658,10 +662,6 @@ body:has(.nav--smallScreen.active) .header {
 /* dreamers */
 .dreamers__content 
 {
-    position: fixed;
-    transform: translateX(-50%);
-    top: 0;
-    left: 50%;
     height: 100%;
     display: none;
 }
@@ -787,8 +787,8 @@ body:has(.nav--smallScreen.active) .header {
     transform: translateX(-50%);
     bottom: 0;
     left: 50%;
-    width: auto;
-    height: calc(100% - var(--f-size--xl)*3/4);
+    max-width: 100%;
+    max-height: calc(100% - var(--f-size--xl)*3/4);
 }
 .active .dreamers__content {
     display: block;
