@@ -186,6 +186,16 @@ footer {
     padding: var(--p--base);
     background-color: rgba(var(--c--bg), 1);
 }
+.button {
+    width: fit-content;
+    padding: var(--p--base);
+    background-color: rgba(var(--c--accent), 0.7);
+    border-radius: 5px;
+    color: rgba(var(--c--bg), 1);
+}
+.button:hover {
+    background-color: rgba(var(--c--accent), 0.9);
+}
 
 .coming-soon__wrapper {
     display: flex;
@@ -835,6 +845,14 @@ body:has(.nav--smallScreen.active) .header {
 }
 .map {
     height: 50%;
+}
+/* contact */
+.contact__content {
+    flex-direction: column;
+    align-items: center;
+}
+.active .contact__content {
+    display: flex;
 }
 /* DECORATOR */
 .foreground--top {
