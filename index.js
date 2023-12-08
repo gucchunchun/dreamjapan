@@ -128,6 +128,7 @@ const scrollCallback = (entries) => {
             }
         } else {
             entry.target.classList.remove('active');
+            body.classList.remove(entry.target.id);
         }
     })
 }
