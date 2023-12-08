@@ -171,11 +171,11 @@ footer {
 
 /* COMPONENT */
 .logo {
-    display: inline-block;
+    display: block;
 }
 
 .title {
-    display: inline-block;
+    display: block;
 }
 
 .title__hidden {
@@ -702,7 +702,6 @@ body:has(.nav--smallScreen.active) .header {
     height: calc(100% - var(--h--header) - var(--f-size--xl)*var(--f--line-height) - var(--m--item) - var(--m--section));
     padding: var(--p--base);
     opacity: 0;
-    transition: all var(--duration--base);
 }
 .dreamers__card__content--top {
     width: 100%;
@@ -792,8 +791,6 @@ body:has(.nav--smallScreen.active) .header {
     padding: calc(var(--p--base)/2);
     border: calc(var(--p--base)/2) solid rgba(var(--c--tertiary), 1);
     opacity: 0;
-    transition: all var(--duration--base);
-    transition-delay: 0.01s;
 }
 .dreamers__card__picture .dreamers__card__title__first {
     width: calc(var(--f-size--xl)*1);
