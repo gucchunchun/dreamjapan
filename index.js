@@ -88,6 +88,7 @@ const scrollCallback = (entries) => {
                 body.style.setProperty('--scroll', ratio);
             }else {
                 entry.target.classList.remove('active');
+                entry.target.classList.remove('active');
                 body.classList.remove(entry.target.id);
             }
 
@@ -142,6 +143,7 @@ sections.forEach(elem => {
 
 window.addEventListener('resize', ()=>{
     windowHeight = window.innerHeight;
+    optionMargin = `0px 0px ${Math.round(-windowHeight/2)}px 0px`;
     optionMargin = `0px 0px ${Math.round(-windowHeight/2)}px 0px`;
     scrollMainOptions = {
         rootMargin: optionMargin,

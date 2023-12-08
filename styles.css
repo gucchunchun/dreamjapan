@@ -6,6 +6,7 @@
     --screen--m: 768px;
 
     --h--header: 80px;
+    --h--header: 80px;
 
     --z--bg: -10;
     --z--base: 5;
@@ -556,6 +557,9 @@ body:has(.nav--smallScreen.active) .header {
     transform: scale(1);
 }
 
+.about > * .home__logo-wrap {
+    transform: scale(1);
+    height: 60%;
 .about > * .home__logo-wrap {
     transform: scale(1);
     height: 60%;
