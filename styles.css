@@ -181,8 +181,6 @@ footer {
     display: none;
 }
 
-
-
 .ticket {
     padding: var(--p--base);
     background-color: rgba(var(--c--bg), 1);
@@ -602,18 +600,26 @@ body:has(.nav--smallScreen.active) .header {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    text-transform: capitalize;
 }
 .active .section__title {
     transform: scale(1) translateX(-50%);
 }
 .section__content {
+    position: fixed;
+    transform: translateX(-50%);
+    top: 0;
+    left: 50%;
     width: 90%;
     max-width: calc(var(--screen--s) * 0.9);
     margin: 0 auto;
+    display: none;
+}
+.active .section__content {
+    display: block;
 }
 /* About */
 .about__content--about {
-    position: fixed;
     transform: scale(0) translateX(-50%);
     transform-origin: 0;
     top: calc(60% + var(--m--item));
@@ -658,10 +664,6 @@ body:has(.nav--smallScreen.active) .header {
 /* dreamers */
 .dreamers__content 
 {
-    position: fixed;
-    transform: translateX(-50%);
-    top: 0;
-    left: 50%;
     height: 100%;
     display: none;
 }
@@ -798,6 +800,41 @@ body:has(.nav--smallScreen.active) .header {
 .active.dreamers__card .dreamers__card__picture {
     opacity: 1;
 }
+/* other */
+.others__content {
+    height: 100%;
+    display: none;
+}
+.others__content__coming-soon {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    font-size: var(--f-size--xl);
+    line-height: var(--f-size--xl);
+}
+.active .others__content {
+    display: block;
+}
+/* venue */
+.venue__content {
+    height: 100dvh;
+    padding-top: calc(var(--h--header) + var(--f-size--l)*var(--f--line-height) + var(--m--item));
+    padding-bottom: var(--m--section);
+    flex-direction: column;
+    justify-content: space-between;
+}
+.active .venue__content {
+    display: flex;
+}
+.map {
+    height: 50%;
+}
+.address__link {
+    color: rgba(var(--c--text), 0.5);
+    text-decoration: underline;
+}
+
 /* DECORATOR */
 .foreground--top {
     position: fixed;
