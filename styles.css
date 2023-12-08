@@ -620,7 +620,8 @@ body:has(.nav--smallScreen.active) .header {
     height: 100%;
     width: 90%;
     max-width: calc(var(--screen--s) * 0.9);
-    margin: 0 auto;
+    padding-top: calc(var(--h--header) + var(--f-size--xl)*var(--f--line-height) + var(--m--item));
+    padding-bottom: var(--m--section);
     display: none;
 }
 .active .section__content {
@@ -804,6 +805,27 @@ body:has(.nav--smallScreen.active) .header {
 }
 .active.dreamers__card .dreamers__card__picture {
     opacity: 1;
+}
+
+/* others */
+
+/* venue */
+.venue__content {
+    flex-direction: column;
+    justify-content: space-between;
+}
+.active .venue__content {
+    display: flex;
+}
+.address__link {
+    color: rgba(var(--c--text), 0.5);
+    text-decoration: underline;
+}
+.address__link:hover {
+    color: rgba(var(--c--text), 0.9);
+}
+.map {
+    height: 50%;
 }
 /* DECORATOR */
 .foreground--top {
