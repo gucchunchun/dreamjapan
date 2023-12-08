@@ -35,7 +35,7 @@
 
     --duration--landing: 2s;
     --duration--base: 0.5s;
-    --duration--nav: 0.7s
+    --duration--nav: 0.8s
 }
 
 /* RESET */
@@ -185,6 +185,14 @@ footer {
 .ticket {
     padding: var(--p--base);
     background-color: rgba(var(--c--bg), 1);
+}
+
+.coming-soon__wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
 }
 
 @keyframes hamburgerAfter {
@@ -615,9 +623,11 @@ body:has(.nav--smallScreen.active) .header {
     transform: translateX(-50%);
     top: 0;
     left: 50%;
+    height: 100%;
     width: 90%;
     max-width: calc(var(--screen--s) * 0.9);
-    margin: 0 auto;
+    padding-top: calc(var(--h--header) + var(--f-size--xl)*var(--f--line-height) + var(--m--item));
+    padding-bottom: var(--m--section);
     display: none;
 }
 .active .section__content {
@@ -667,11 +677,6 @@ body:has(.nav--smallScreen.active) .header {
 }
 
 /* dreamers */
-.dreamers__content 
-{
-    height: 100%;
-    display: none;
-}
 .carta {
     background: rgba(255,255,255, 1);
     border: var(--p--base) solid rgba(var(--c--tertiary), 1);
@@ -805,35 +810,16 @@ body:has(.nav--smallScreen.active) .header {
 .active.dreamers__card .dreamers__card__picture {
     opacity: 1;
 }
-/* other */
-.others__content {
-    height: 100%;
-    display: none;
-}
-.others__content__coming-soon {
-    position: absolute;
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
-    font-size: var(--f-size--xl);
-    line-height: var(--f-size--xl);
-}
-.active .others__content {
-    display: block;
-}
+
+/* others */
+
 /* venue */
 .venue__content {
-    height: 100dvh;
-    padding-top: calc(var(--h--header) + var(--f-size--l)*var(--f--line-height) + var(--m--item));
-    padding-bottom: var(--m--section);
     flex-direction: column;
     justify-content: space-between;
 }
 .active .venue__content {
     display: flex;
-}
-.map {
-    height: 50%;
 }
 .address__link {
     color: rgba(var(--c--text), 0.5);
@@ -841,6 +827,9 @@ body:has(.nav--smallScreen.active) .header {
 }
 .address__link:hover {
     color: rgba(var(--c--text), 0.9);
+}
+.map {
+    height: 50%;
 }
 /* DECORATOR */
 .foreground--top {
