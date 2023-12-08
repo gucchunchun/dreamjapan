@@ -560,6 +560,7 @@ body:has(.nav--smallScreen.active) .header {
 .about > * .home__logo-wrap {
     transform: scale(1);
     height: 60%;
+}
 .about > * .home__logo-wrap {
     transform: scale(1);
     height: 60%;
