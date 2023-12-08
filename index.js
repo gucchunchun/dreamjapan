@@ -35,6 +35,7 @@ const header = document.querySelector('.header');
 const home = document.querySelector('.foreground--home');
 const main = document.querySelector('.foreground--main');
 const sections = document.querySelectorAll('.section');
+const dreamersCard = document.querySelectorAll('.dreamers__card');
 
 // set number of times
 const NUM_STEPS = 100;
@@ -52,6 +53,10 @@ function buildThresholdList() {
 let windowHeight = window.innerHeight;
 // -100 = to handle the difference of intersections timing of those observers below
 let optionMargin = `0px 0px ${Math.round(-windowHeight/2)}px 0px`;
+
+// calculate the number of dreamersCard
+const numberOfDreamersCard = dreamersCard.length;
+const ratioPerCard = 1 / numberOfDreamersCard;
 
 let scrollMainOptions = {
     rootMargin: optionMargin,
@@ -75,13 +80,7 @@ const scrollCallback = (entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             const ratio = Math.round(entry.intersectionRatio*100)/100;
-            if(entry.target.id == 'about') {
-                if(entry.intersectionRect.bottom < windowHeight) {
-                    body.classList.add('logo-meaning');
-                }else {
-                    body.classList.remove('logo-meaning');
-                }
-            }
+            entry.target.style.setProperty('--scroll', ratio);
             if(0.5<ratio){
                 entry.target.classList.add('active');
                 body.classList.remove('home');
@@ -91,7 +90,42 @@ const scrollCallback = (entries) => {
                 entry.target.classList.remove('active');
                 body.classList.remove(entry.target.id);
             }
-            entry.target.style.setProperty('--scroll', ratio);
+
+            if(entry.target.id == 'about') {
+                if(entry.intersectionRect.bottom < windowHeight) {
+                    body.classList.add('logo-meaning');
+                }else {
+                    body.classList.remove('logo-meaning');
+                }
+            }
+            if(entry.target.id == 'dreamers') {
+                if(entry.intersectionRect.bottom < windowHeight) {
+                    for(let i=0 ; i < numberOfDreamersCard ; i++) {
+                        let criteria = i * ratioPerCard;
+                        console.log(criteria)
+                        if(criteria<=0.5) {
+                            continue
+                        }else if(ratio < criteria) {
+                            dreamersCard[i].classList.add('active');
+                        }else if(criteria < ratio){
+                            dreamersCard[i].classList.remove('active');
+                        }
+                    }
+                }else {
+                    if(ratio<0.5) {
+                        dreamersCard[0].classList.remove('active');
+                    }else {
+                        for(let i=0 ; i < numberOfDreamersCard ; i++) {
+                            let criteria = i * ratioPerCard;
+                            if(criteria < (ratio - 0.47)) {
+                                dreamersCard[i].classList.add('active');
+                            } else if((ratio - 0.47) < criteria){
+                                dreamersCard[i].classList.remove('active');
+                            }
+                        }
+                    }
+                }
+            }
         } else {
             entry.target.classList.remove('active');
         }

@@ -657,24 +657,25 @@ body:has(.nav--smallScreen.active) .header {
 
 /* dreamers */
 .dreamers__content {
-    position: absolute;
+    position: fixed;
     transform: translateX(-50%);
-    bottom: 0;
+    top: 0;
     left: 50%;
-    height: calc(100% - var(--h--header) - var(--f-size--xl)*var(--f--line-height) - var(--m--item));
-    padding-bottom: var(--m--section);
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
+    height: 100%;
 }
 .dreamers__card {
-    transform: rotate(-5deg);
+    --angle: -5deg;
+    position: absolute;
+    bottom: var(--m--section);
+    left: 0;
+    transform: rotate(var(--angle));
     transform-origin: center;
     width: 100%;
-    height: 100%;
+    height: calc(100% - var(--h--header) - var(--f-size--xl)*var(--f--line-height) - var(--m--item) - var(--m--section));
     padding: calc(var(--p--base)/2);
     background: rgba(var(--c--bg), 1);
-    border: calc(var(--p--base)/2) solid rgba(var(--c--tertiary), 1)
+    border: calc(var(--p--base)/2) solid rgba(var(--c--tertiary), 1);
+    display: none;
 }
 .dreamers__card__content--top {
     width: 100%;
@@ -742,16 +743,16 @@ body:has(.nav--smallScreen.active) .header {
     content: '#';
 }
 
-.dreamers__card__content {
+.dreamers__card__content-bottom {
     width: 50%;
     height: 50%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
 }
 .dreamers__card__picture {
     position: absolute;
-    transform: rotate(10deg);
+    transform: rotate(calc(var(--angle)* -2));
     transform-origin: bottom left;
     bottom: 0%;
     right: 2.5%;
@@ -768,10 +769,16 @@ body:has(.nav--smallScreen.active) .header {
 }
 .dreamers__card__picture__img {
     position: absolute;
+    transform: translateX(-50%);
     bottom: 0;
-    left: calc(var(--f-size--xl)*3/4);
-    width: auto;
-    height: 90%;
+    left: 50%;
+    max-width: calc(100% - var(--f-size--xl)*3/4);
+    height: auto;
+    max-height: calc(100% - var(--f-size--xl)*3/4);
+}
+
+.active.dreamers__card {
+    display: block;
 }
 /* DECORATOR */
 .foreground--top {
