@@ -15,10 +15,11 @@
 
     --c--text: 25, 47, 96;
     --c--bg: 248, 244, 230;
-    --c--accent: 172, 39, 24;
     --c--primary: 132, 185, 203;
+    --c--accent: 172, 39, 24;
+    --c--tertiary: 0, 110, 84;
 
-    --p--base: 8px;
+    --p--base: 16px;
     --p--bottom: 64px;
     --m--section: 64px;
     --m--item: 32px;
@@ -29,6 +30,7 @@
     --f-size--l: 1.999rem;
     --f-size--xl: 2.827rem;
     --f-size--xxl: 3.998rem;
+    --f--line-height: 1.5;
 
     --duration--landing: 2s;
     --duration--base: 0.5s;
@@ -59,28 +61,32 @@ ul, ol {
     list-style-type: none;
 }
 
+img {
+    display: block;
+}
+
 p {
     font-size: var(--f-size--text);
-    line-height: calc(var(--f-size--text)*1);
+    line-height: calc(var(--f-size--text)*var(--f--line-height));
 }
 p::first-letter {
     text-transform: uppercase;
 }
 h1 {
     font-size: var(--f-size--xxl);
-    line-height: calc(var(--f-size--xxl)*1.5);
+    line-height: calc(var(--f-size--xxl)*var(--f--line-height));
 }
 h2 {
     font-size: var(--f-size--xl);
-    line-height: calc(var(--f-size--xl)*1.5);
+    line-height: calc(var(--f-size--xl)*var(--f--line-height));
 }
 h3 {
     font-size: var(--f-size--l);
-    line-height: calc(var(--f-size--l)*1.5);
+    line-height: calc(var(--f-size--l)*var(--f--line-height));
 }
 h4 {
     font-size: var(--f-size--m);
-    line-height: calc(var(--f-size--m)*1.5);
+    line-height: calc(var(--f-size--m)*var(--f--line-height));
 }
 p, h1, h2, h3, h4 {
     color: rgba(var(--c--text), 0.9);
@@ -312,15 +318,17 @@ footer {
     background-color: none;
     border-radius: 10px;
     display: none;
-    text-align: center;
-    vertical-align: middle;
 }
 .content-change-on-hover:hover {
-    display: hidden;
+    color: transparent;
 }
 .content-change-on-hover:hover::before {
-    background-color: rgba(var(--c--accent), 1);
     display: block;
+    color: rgba(var(--c--text), 0.9);
+}
+.nav-list--small.content-change-on-hover::before {
+    color: rgba(var(--c--bg), 0.9);
+    text-align: center;
 }
 
 /* BACKGROUND STATIC */
@@ -376,7 +384,6 @@ body:has(.nav--smallScreen.active) .header {
     height: 100%;
 }
 .title__img {
-    display: block;
     width: auto;
     max-width: 100%;
     height: 100%;
@@ -559,7 +566,7 @@ body:has(.nav--smallScreen.active) .header {
     position: absolute;
     transform: scale(1);
     bottom: 0;
-    height: calc(100% - var(--h--header) - var(--f-size--xl) - var(--m--item));
+    height: calc(100% - var(--h--header) - var(--f-size--xl)*var(--f--line-height) - var(--m--item));
 }
 .about > * .home__logo,
 .about > * .home__text-wrap {
@@ -622,7 +629,7 @@ body:has(.nav--smallScreen.active) .header {
     bottom: 40%;
     left: 50%;
     width: auto;
-    height: calc(60dvh - var(--h--header) - var(--f-size--xl) - var(--m--item));
+    height: calc(60dvh - var(--h--header) - var(--f-size--xl)*var(--f--line-height) - var(--m--item));
     transition: all var(--duration--base);
 }
 .about__content--logo {
@@ -648,6 +655,150 @@ body:has(.nav--smallScreen.active) .header {
     transform: scale(1) translate(-50%);
 }
 
+/* dreamers */
+.dreamers__content 
+{
+    position: fixed;
+    transform: translateX(-50%);
+    top: 0;
+    left: 50%;
+    height: 100%;
+    display: none;
+}
+.carta {
+    background: rgba(var(--c--bg), 1);
+    border: var(--p--base) solid rgba(var(--c--tertiary), 1);
+    border-radius: 5px;
+    box-shadow: 3px 3px rgba(var(--c--text), 0.8);
+}
+.dreamers__card {
+    --angle: -5deg;
+    position: absolute;
+    bottom: var(--m--section);
+    left: 0;
+    transform: rotate(var(--angle));
+    transform-origin: center;
+    width: 100%;
+    height: calc(100% - var(--h--header) - var(--f-size--xl)*var(--f--line-height) - var(--m--item) - var(--m--section));
+    padding: var(--p--base);
+    opacity: 0;
+    transition: all var(--duration--base);
+}
+.dreamers__card__content--top {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.dreamers__card__title-wrap {
+    width: 100%;
+}   
+.dreamers__card__title {
+    font-size: var(--f-size--xl);
+}
+.dreamers__card__title__first {
+    position: relative;
+    width: calc(var(--f-size--xl)*1.5);
+    aspect-ratio: 1;
+    background-color: rgba(var(--c--accent), 1);
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+    font-size: calc(var(--f-size--xl)*1.5);
+    line-height: calc(var(--f-size--xl)*1.5);
+    font-weight: bold;
+    color: rgba(var(--c--bg), 1);
+}
+.dreamers__card__title__sub {
+    display: inline-block;
+    font-size: calc(var(--f-size--l));
+    line-height: calc(var(--f-size--l));
+    white-space: nowrap;
+}
+.dreamers__card__title--jp {
+    font-weight: bold;
+}
+.dreamers__card__member-wrap {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: var(--f-size--m);
+}
+.dreamers__card__member__property {
+    text-transform: uppercase;
+    font-size: inherit;
+}
+.dreamers__card__member__property::after {
+    content: ':';
+    margin-right: var(--f-size--text);
+}
+.dreamers__card__member {
+    margin-right: var(--f-size--text);
+    font-size: inherit;
+}
+
+.dreamers__card__genre-wrap {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.dreamers__card__genre {
+    margin-right: var(--f-size--text);
+}
+.dreamers__card__genre::before {
+    content: '#';
+}
+
+.dreamers__card__content-bottom {
+    width: 60%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.dreamers__card__content__text {
+    width: 100%;
+    max-height: 100%;
+}
+.dreamers__card__picture {
+    position: absolute;
+    transform: rotate(calc(var(--angle)* -2));
+    transform-origin: bottom left;
+    bottom: 0%;
+    right: 2.5%;
+    width: 50%;
+    height: 50%;
+    padding: calc(var(--p--base)/2);
+    background: rgba(var(--c--bg), 1);
+    border: calc(var(--p--base)/2) solid rgba(var(--c--tertiary), 1);
+    border-radius: 5px;
+    opacity: 0;
+    transition: all var(--duration--base);
+    transition-delay: 0.01s;
+}
+.dreamers__card__picture .dreamers__card__title__first {
+    width: calc(var(--f-size--xl)*1);
+    font-size: calc(var(--f-size--xl)*1);
+    line-height: calc(var(--f-size--xl)*1);
+}
+.dreamers__card__picture__img {
+    position: absolute;
+    transform: translateX(-50%);
+    bottom: 0;
+    left: 50%;
+    width: auto;
+    height: calc(100% - var(--f-size--xl)*3/4);
+}
+.active .dreamers__content {
+    display: block;
+}
+.active.dreamers__card {
+    opacity: 1;
+}
+.active.dreamers__card .dreamers__card__picture {
+    opacity: 1;
+}
 /* DECORATOR */
 .foreground--top {
     position: fixed;
