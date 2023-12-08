@@ -181,11 +181,17 @@ footer {
     display: none;
 }
 
-
-
 .ticket {
     padding: var(--p--base);
     background-color: rgba(var(--c--bg), 1);
+}
+
+.coming-soon__wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
 }
 
 @keyframes hamburgerAfter {
@@ -611,9 +617,14 @@ body:has(.nav--smallScreen.active) .header {
     transform: translateX(-50%);
     top: 0;
     left: 50%;
+    height: 100%;
     width: 90%;
     max-width: calc(var(--screen--s) * 0.9);
     margin: 0 auto;
+    display: none;
+}
+.active .section__content {
+    display: block;
 }
 /* About */
 .about__content--about {
@@ -660,11 +671,6 @@ body:has(.nav--smallScreen.active) .header {
 }
 
 /* dreamers */
-.dreamers__content 
-{
-    height: 100%;
-    display: none;
-}
 .carta {
     background: rgba(var(--c--bg), 1);
     border: var(--p--base) solid rgba(var(--c--tertiary), 1);
