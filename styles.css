@@ -666,7 +666,7 @@ body:has(.nav--smallScreen.active) .header {
     display: none;
 }
 .carta {
-    background: rgba(var(--c--bg), 1);
+    background: rgba(255,255,255, 1);
     border: var(--p--base) solid rgba(var(--c--tertiary), 1);
     border-radius: 5px;
     box-shadow: 3px 3px rgba(var(--c--text), 0.8);
@@ -770,9 +770,7 @@ body:has(.nav--smallScreen.active) .header {
     width: 50%;
     height: 50%;
     padding: calc(var(--p--base)/2);
-    background: rgba(var(--c--bg), 1);
     border: calc(var(--p--base)/2) solid rgba(var(--c--tertiary), 1);
-    border-radius: 5px;
     opacity: 0;
     transition: all var(--duration--base);
     transition-delay: 0.01s;
@@ -788,7 +786,8 @@ body:has(.nav--smallScreen.active) .header {
     bottom: 0;
     left: 50%;
     width: auto;
-    height: calc(100% - var(--f-size--xl)*3/4);
+    max-width: 100%;
+    max-height: calc(100% - var(--f-size--xl)*3/4);
 }
 .active .dreamers__content {
     display: block;
