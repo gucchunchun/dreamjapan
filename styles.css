@@ -152,7 +152,6 @@ p, h1, h2, h3, h4 {
     padding: var(--p--base);
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
     transition: all 0.8s ease-in-out;
@@ -162,16 +161,18 @@ p, h1, h2, h3, h4 {
     width: 100%;
 }
 
-body:has(.nav--smallScreen.active) .foreground {
-    display: none;
-}
-
 footer {
     z-index: var(--z--base);
     position: relative;
     max-width: var(--screen--s);
     margin: 0 auto;
     height: 320px;
+}
+
+body:has(.nav--smallScreen.active) .foreground,
+body:has(.nav--smallScreen.active) footer
+{
+    display: none;
 }
 
 /* COMPONENT */
@@ -705,7 +706,8 @@ body:has(.nav--smallScreen.active) .header {
 .logo--about {
     transform: scale(0);
     width: auto;
-    height: calc(60dvh - var(--h--header) - var(--f-size--xl)*var(--f--line-height) - var(--m--item));
+    max-width: 100%;
+    max-height: calc(60dvh - var(--h--header) - var(--f-size--xl)*var(--f--line-height) - var(--m--item));
     margin: 0 auto;
     transition: all var(--duration--base);
 }
