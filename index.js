@@ -7,7 +7,7 @@ function openNavMenu() {
     navToggleBtn.classList.add('animated');
     navToggleBtn.classList.add('active');
     navSmallScreen.classList.add('active');
-    navToggleBtn.ariaLabel = 'close navigation menu';
+    navToggleBtn.setAttribute('aria-label', 'close navigation menu');
     navToggleBtn.removeEventListener('click', openNavMenu);
     navToggleBtn.addEventListener('click', closeNavMenu);
     navSmallLists.forEach(list => list.addEventListener('click', closeNavMenu));
@@ -16,7 +16,7 @@ function closeNavMenu() {
     navToggleBtn.classList.remove('animated');
     navToggleBtn.classList.remove('active');
     navSmallScreen.classList.remove('active');
-    navToggleBtn.ariaLabel = 'open navigation menu';
+    navToggleBtn.setAttribute('aria-label', 'open navigation menu');
     navToggleBtn.removeEventListener('click', closeNavMenu);
     navToggleBtn.addEventListener('click', openNavMenu);
     navSmallLists.forEach(list => list.removeEventListener('click', closeNavMenu));
