@@ -167,10 +167,13 @@ footer {
     height: 320px;
 }
 
-body:has(.nav--smallScreen.active) .foreground,
-body:has(.nav--smallScreen.active) footer
-{
-    display: none;
+body:has(.nav--smallScreen.active) .foreground{
+    visibility: hidden;
+    overflow: hidden;
+}
+body:has(.nav--smallScreen.active) footer{
+    visibility: hidden;
+    overflow: hidden;
 }
 
 /* COMPONENT */
@@ -197,7 +200,7 @@ body:has(.nav--smallScreen.active) footer
     box-shadow: inset 3px 3px 5px rgba(var(--c--text), 0.3), inset -3px -3px 5px rgba(var(--c--text), 0.3) ;
 }
 .ticket--side {
-    z-index: var(--z--popup);
+    z-index: var(--z--top);
     position: fixed;
     bottom: var(--m--item);
     left: var(--m--item);
@@ -383,7 +386,7 @@ body:has(.nav--smallScreen.active) footer
         z-index: var(--z--base);
     }
 }
-.background--dynamic {
+.home .background--dynamic {
     z-index: var(--z--base);
     animation: landing-dynamic var(--duration--landing);
     pointer-events: none;
@@ -402,12 +405,16 @@ body:has(.nav--smallScreen.active) footer
     background-repeat: no-repeat;
     background-size: contain;
 }
+
 body:has(.nav--smallScreen.active) .background--dynamic {
     z-index: var(--z--top);
+    pointer-events: none;
 }
 /* HEADER */
-.header.active
-{
+.header.active{
+    transform: translateY(0%);
+}
+body:has(.nav--smallScreen.active) .header {
     transform: translateY(0%);
 }
 .header__logo-wrap {
@@ -481,7 +488,6 @@ body:has(.nav--smallScreen.active) .background--dynamic {
     color: rgba(var(--c--bg), 1);
 }
 .nav--smallScreen.active {
-    z-index: var(--z--bg);
     display: block;
     animation: smallNav-opening var(--duration--nav) ease-out;
 }
