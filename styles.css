@@ -406,8 +406,8 @@ body:has(.nav--smallScreen.active) .background--dynamic {
     z-index: var(--z--top);
 }
 /* HEADER */
-.header.active,
-body:has(.nav--smallScreen.active) .header {
+.header.active
+{
     transform: translateY(0%);
 }
 .header__logo-wrap {
