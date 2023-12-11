@@ -175,6 +175,7 @@ main {
     margin-bottom: var(--m--section);
     margin-inline: auto;
     padding: var(--p--base);
+    scroll-margin-top: var(--h--header);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -218,7 +219,6 @@ main {
 
     /* Detail */
 .section--detail {
-    /* height: 30dvh; */
     background-color: rgba(var(--c--primary), 1);
     color: rgba(var(--c--bg),1);
     justify-content: space-between;
