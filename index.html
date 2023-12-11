@@ -9,92 +9,82 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body class="">
-    <!-- <header class="header__ctr">
-      <div class="header">
-        <div class="header__logo-wrapper">
-          <img
-            class="logo logo--header"
-            src="/images/logo.png"
-            alt="main logo"
-            width="15"
-            height="12"
-            decoding="async"
-          />
-          <h1 class="title title--header">
-            <img
-              class="title__img"
-              src="/images/title.svg"
-              alt="main title"
-              width="15"
-              height="12"
-              decoding="async"
-            />
-            <span hidden>dream japan</span>
-          </h1>
-        </div>
+    <header>
+      <div id="navSmallCtr" class="nav__ctr nav__ctr--s">
+        <nav id="navSmallScreen" class="nav nav--smallScreen">
+          <ul class="nav-list--small__wrapper">
+            <li>
+              <a
+                href="#home"
+                class="nav-list nav-list--small content-change-on-hover"
+                style="--content: 'ホーム'"
+                onclick="ScrollToHomePage()"
+                >home</a
+              >
+            </li>
+            <li>
+              <a
+                href="#detail"
+                class="nav-list nav-list--small content-change-on-hover"
+                style="--content: 'イベント詳細'"
+                onclick="ScrollToHomePage()"
+                >event detail</a
+              >
+            </li>
+            <li>
+              <a
+                href="#about"
+                class="nav-list nav-list--small content-change-on-hover"
+                style="--content: 'ドリームジャパンとは？'"
+                >what's dream japan?</a
+              >
+            </li>
+            <li>
+              <a
+                href="#dreamers"
+                class="nav-list nav-list--small content-change-on-hover"
+                style="--content: '夢追人'"
+                >dreamers</a
+              >
+            </li>
+            <li>
+              <a
+                href="#others"
+                class="nav-list nav-list--small content-change-on-hover"
+                style="--content: 'その他'"
+                >others</a
+              >
+            </li>
+            <li>
+              <a
+                href="#venue"
+                class="nav-list nav-list--small content-change-on-hover"
+                style="--content: '会場'"
+                >venue</a
+              >
+            </li>
+            <li>
+              <a
+                href="#contact"
+                class="nav-list nav-list--small content-change-on-hover"
+                style="--content: '問い合わせ'"
+                >contact</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="hamburger__ctr">
         <button
           id="navToggleBtn"
-          class="hamburger"
+          class="hamburger hamburger--header"
           type="button"
           aria-label="open navigation menu"
         >
           <span class="hamburger__border"></span>
         </button>
       </div>
-    </header> -->
-    <!-- <nav id="navSmallScreen" class="nav nav--smallScreen">
-      <ul class="nav--smallScreen__wrapper">
-        <li>
-          <a
-            href="#home"
-            class="nav-list nav-list--small content-change-on-hover"
-            style="--content: 'ホーム'"
-            onclick="ScrollToHomePage()"
-            >home</a
-          >
-        </li>
-        <li>
-          <a
-            href="#about"
-            class="nav-list nav-list--small content-change-on-hover"
-            style="--content: '私たちについて'"
-            >about us</a
-          >
-        </li>
-        <li>
-          <a
-            href="#dreamers"
-            class="nav-list nav-list--small content-change-on-hover"
-            style="--content: '夢追人'"
-            >dreamers</a
-          >
-        </li>
-        <li>
-          <a
-            href="#others"
-            class="nav-list nav-list--small content-change-on-hover"
-            style="--content: 'その他'"
-            >others</a
-          >
-        </li>
-        <li>
-          <a
-            href="#venue"
-            class="nav-list nav-list--small content-change-on-hover"
-            style="--content: '会場'"
-            >venue</a
-          >
-        </li>
-        <li>
-          <a
-            href="#contact"
-            class="nav-list nav-list--small content-change-on-hover"
-            style="--content: '問い合わせ'"
-            >contact</a
-          >
-        </li>
-      </ul>
-    </nav> -->
+    </header>
 
     <main class="">
       <div class="home__ctr">
@@ -123,7 +113,7 @@
         <a class="detail__place" href="#venue"> 33 Wadeson St, E2 9DR </a>
       </section>
       <section id="about" class="section">
-        <h2 class="section__title">about us</h2>
+        <h2 class="section__title">what's dream japan?</h2>
         <div class="section__content">
           <div class="content__wrapper">
             <img

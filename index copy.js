@@ -1,3 +1,27 @@
+// To toggle navigation menu
+const navToggleBtn = document.getElementById('navToggleBtn');
+const navSmallCtr = document.getElementById('navSmallCtr');
+const navSmallLists = document.querySelectorAll('.nav-list--small');
+
+function openNavMenu() {
+    navToggleBtn.classList.add('animated');
+    navToggleBtn.classList.add('active');
+    navSmallCtr.classList.add('active');
+    navToggleBtn.setAttribute('aria-label', 'close navigation menu');
+    navToggleBtn.removeEventListener('click', openNavMenu);
+    navToggleBtn.addEventListener('click', closeNavMenu);
+    navSmallLists.forEach(list => list.addEventListener('click', closeNavMenu));
+}
+function closeNavMenu() {
+    navToggleBtn.classList.remove('active');
+    navSmallCtr.classList.remove('active');
+    navToggleBtn.setAttribute('aria-label', 'open navigation menu');
+    navToggleBtn.removeEventListener('click', closeNavMenu);
+    navToggleBtn.addEventListener('click', openNavMenu);
+    navSmallLists.forEach(list => list.removeEventListener('click', closeNavMenu));
+}
+navToggleBtn.addEventListener('click', openNavMenu);
+
 // Rotate Text (.txt--rotate)
 class TxtRotate {
     constructor(el, toRotate, period) {
@@ -11,12 +35,6 @@ class TxtRotate {
     rotate() {
         const i = this.loopNum % this.toRotate.length;
         var fullTxt = this.toRotate[i];
-        const regex = /^[a-zA-Z\s]+$/; 
-        if(regex.test(fullTxt)) {
-            this.el.classList.add('alphabet');
-        }else {
-            this.el.classList.remove('alphabet');
-        }
         fullTxt = fullTxt.replace(/\s/g, '<br>');
         
         if (this.isDeleting) {
