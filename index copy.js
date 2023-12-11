@@ -10,17 +10,19 @@ class TxtRotate {
     rotate() {
         var i = this.loopNum % this.toRotate.length;
         var fullTxt = this.toRotate[i];
+        fullTxt = fullTxt.replace(/\s/g, '<br>');
         
         if (this.isDeleting) {
-          this.txt = fullTxt.substring(0, this.txt.length - 1);
+            this.txt = fullTxt.substring(0, this.txt.length - 1);
         } else {
-          this.txt = fullTxt.substring(0, this.txt.length + 1);
+            this.txt = fullTxt.substring(0, this.txt.length + 1);
         }
     
-        this.el.innerText = this.txt;
+        // Check if the last character is '<', and adjust the displayed content accordingly
+        this.el.innerHTML = this.txt.endsWith('<') ? this.txt.slice(0, -1) : this.txt;
     
         var that = this;
-        var delta = 150;
+        var delta = 300;
     
         //while deleting (deleting speed value is set to twice as fast as showing text speed)
         if (this.isDeleting) { delta /= 2; }
