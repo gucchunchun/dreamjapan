@@ -1,3 +1,4 @@
+// Rotate Text (.txt--rotate)
 class TxtRotate {
     constructor(el, toRotate, period) {
         this.toRotate = toRotate;
@@ -8,8 +9,14 @@ class TxtRotate {
         this.isDeleting = false;
     }
     rotate() {
-        var i = this.loopNum % this.toRotate.length;
+        const i = this.loopNum % this.toRotate.length;
         var fullTxt = this.toRotate[i];
+        const regex = /^[a-zA-Z\s]+$/; 
+        if(regex.test(fullTxt)) {
+            this.el.classList.add('alphabet');
+        }else {
+            this.el.classList.remove('alphabet');
+        }
         fullTxt = fullTxt.replace(/\s/g, '<br>');
         
         if (this.isDeleting) {
@@ -37,6 +44,7 @@ class TxtRotate {
           this.isDeleting = false;
           this.loopNum++;
           delta = 500;
+        //   this.el.style.color = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random()*255})`
         }
     
         setTimeout(function() {
@@ -45,9 +53,8 @@ class TxtRotate {
     };
     
 }
-
 addEventListener('load', () => {
-    const RotateText = document.querySelector('.txt-rotate');
+    const RotateText = document.querySelector('.txt--rotate');
     const toRotate = RotateText.getAttribute('data-rotate').split(',');
     const period = RotateText.getAttribute('data-period');
     if (toRotate) {

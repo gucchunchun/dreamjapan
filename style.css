@@ -47,8 +47,7 @@
 body {
     width: 100dvw;
     overflow-x: hidden;
-    font-family: 'Kanit', sans-serif;
-    font-family: 'Dela Gothic One', sans-serif;
+    font-family: 'Kanit','Dela Gothic One', sans-serif;
 }
 a {
     text-decoration: none;
@@ -149,6 +148,9 @@ main {
     height: 30%;
     text-transform: capitalize;
     text-align: center;
-    vertical-align: center;
-    white-space: nowrap;
 }
+.title--home .alphabet {
+    font-size: calc(var(--f-size--xxl)*1.4);
+}
+
+    /*  */
