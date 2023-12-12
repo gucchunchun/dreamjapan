@@ -17,9 +17,9 @@
 
     --c--text: 20, 17, 18;
     --c--bg: 255, 255, 255;
-    --c--bg--secondary: 248, 244, 230;
     --c--primary: 201, 23, 30;
-    /* --c--primary: 175, 38, 23; */
+    /* --c--accent: 252, 200, 0; */
+
 
     --p--base: 16px;
     --m--bottom: 32px;
@@ -106,6 +106,27 @@ h1, h2, h3, h4 {
     color: rgba(var(--c--primary), 1);
 }
 
+/* KEY FRAME */
+@keyframes pulseScale {
+    0% {
+        transform: scale(1);
+    }
+    79% {
+        transform: scale(1);
+    }
+    80%{
+        transform: scale(1.2);
+    }
+    83%{
+        transform: scale(1);
+    }
+    90%{
+        transform: scale(1.2);
+    }
+    93%{
+        transform: scale(1);
+    }
+}
 
 /* HEADER */
 header {
@@ -388,6 +409,14 @@ main {
     aspect-ratio: 4 / 3;
 }
 
+/* FOOTER */
+footer {
+    height: 32px;
+}
+.footer__copyright {
+    text-align: center;
+}
+
 /* COMPONENT */
 @keyframes hamburgerAfter {
     0% {
@@ -526,15 +555,6 @@ main {
     color: rgba(var(--c--bg), 0.9);
     text-align: center;
 }
-.ticket {
-    width: fit-content;
-    height: fit-content;
-    padding: var(--p--base);
-    background-color: rgba(var(--c--bg),1);
-    border-radius: 5px;
-    display: inline-block;
-    color: rgba(var(--c--primary), 1);
-}
 .hidden {
     display: none;
 }
@@ -557,4 +577,40 @@ p.text--red {
 }
 .text--bold {
     font-weight: bold;
+}
+
+.ticket {
+    width: fit-content;
+    height: fit-content;
+    padding: var(--p--base);
+    background-color: rgba(var(--c--bg),1);
+    border-radius: 5px;
+    display: inline-block;
+    color: rgba(var(--c--primary), 1);
+}
+.ticket--side {
+    position: fixed;
+    bottom: calc(var(--m--section)/2);
+    left: calc(var(--p--base)/2);
+    width: 64px;
+    aspect-ratio: 1;
+    background-image: url('images/plum.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    text-align: center;
+    animation: pulseScale 3s infinite ease-in-out;
+}
+.ticket--side__label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: fit-content;
+    max-height: 60%;
+    display: inline-block;
+    color: rgba(var(--c--bg), 1);
+    font-size: clamp(calc(var(--f-size--text)*0.8),calc(100dvw/30), var(--f-size--text));
+    line-height: clamp(calc(var(--f-size--text)*0.8),calc(100dvw/30), calc(var(--f-size--text)));
 }
