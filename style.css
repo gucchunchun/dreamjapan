@@ -25,7 +25,7 @@
     --m--bottom: 32px;
     --m--section: 32px;
     --m--content: 24px;
-    --m--item: 16px;
+    --m--wrapper: 16px;
 
     --f-size--text: 1rem;
     --f-size--s: 0.707rem;
@@ -193,7 +193,7 @@ main {
     text-align: center;
     text-transform: capitalize;
     text-decoration: underline;
-    margin-bottom: var(--m--item);
+    margin-bottom: var(--m--wrapper);
 }
 .section__content {
     width: 100%;
@@ -206,7 +206,7 @@ main {
     margin-bottom: 0;
 }
 .content__wrapper {
-    margin-bottom: var(--m--item);
+    margin-bottom: var(--m--wrapper);
 }
 .content__wrapper:last-child {
     margin-bottom: 0;
@@ -245,7 +245,7 @@ main {
     height: fit-content;
     background-color: rgba(var(--c--primary), 1);
     color: rgba(var(--c--bg),1);
-    gap: var(--m--item);
+    gap: var(--m--wrapper);
 }
 .section--detail * {
     color: inherit;
@@ -288,7 +288,7 @@ main {
     align-items: center;
 }
 .dreamers__card > * {
-    margin-bottom: var(--m--item);
+    margin-bottom: var(--m--wrapper);
 }
 .dreamers__card__title__wrapper {
     width: 100%;
@@ -366,9 +366,6 @@ main {
 }
 
     /* Others */
-.others__content__title {
-    text-transform: uppercase;
-}
 .others__content--list {
     width: 100%;
     height: fit-content;
@@ -382,6 +379,13 @@ main {
 }
 .others__content--list__content::before {
     content: '-';
+}
+
+    /* Venue */
+.map {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
 }
 
 /* COMPONENT */
@@ -537,6 +541,13 @@ main {
 .avoidwrap {
     display: inline-block;
     text-decoration: inherit;
+}
+a.link {
+    color: rgba(var(--c--primary), 0.5);
+    text-decoration: underline;
+}
+a.link:visited {
+    color: rgba(var(--c--text), 0.2);
 }
 .text--center {
     text-align: center;
