@@ -99,7 +99,9 @@ h4, .text--m {
 p {
     color: rgba(var(--c--text), 0.9);
 }
-
+p::first-letter {
+    text-transform: uppercase;
+}
 h1, h2, h3, h4 {
     color: rgba(var(--c--primary), 1);
 }
@@ -197,7 +199,7 @@ main {
     width: 100%;
     margin-bottom: var(--m--content);
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
 }
 .section__content:last-child {
@@ -276,9 +278,6 @@ main {
 .section--dreamers {
     border: dotted 2px rgba(var(--c--primary), 1);
     overflow-x: hidden;
-}
-.section__content--dreamers {
-    flex-direction: column;
 }
 .dreamers__card {
     width: 100%;
@@ -366,8 +365,24 @@ main {
     margin: 0 auto;
 }
 
-        /* Dreamers */
-
+    /* Others */
+.others__content__title {
+    text-transform: uppercase;
+}
+.others__content--list {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.others__content--list__content {
+    width: 50%;
+    text-transform: capitalize;
+}
+.others__content--list__content::before {
+    content: '-';
+}
 
 /* COMPONENT */
 @keyframes hamburgerAfter {
