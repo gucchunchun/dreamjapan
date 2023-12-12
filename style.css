@@ -546,9 +546,6 @@ a.link {
     color: rgba(var(--c--primary), 0.5);
     text-decoration: underline;
 }
-a.link:visited {
-    color: rgba(var(--c--text), 0.2);
-}
 .text--center {
     text-align: center;
 }
