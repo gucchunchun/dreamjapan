@@ -366,6 +366,9 @@ main {
     margin: 0 auto;
 }
 
+        /* Dreamers */
+
+
 /* COMPONENT */
 @keyframes hamburgerAfter {
     0% {
@@ -528,4 +531,7 @@ main {
 }
 p.text--red {
     color: rgba(var(--c--primary), 1);
+}
+.text--bold {
+    font-weight: bold;
 }
