@@ -6,36 +6,78 @@
     <title>Dream Japan</title>
     <meta name="description" content="Japanese culture event" />
     <link rel="icon" type="image/x-icon" href="/images/logo.png" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body class="">
-    <div class="background--static">
-      <div class="background__side--left"></div>
-      <div class="background__side--right"></div>
-    </div>
-    <div class="background--dynamic">
-      <div class="background--dynamic__fuji"></div>
-    </div>
-    <header class="header__ctr">
-      <div class="header">
-        <div class="header__logo-wrap">
-          <img
-            class="logo logo--header"
-            src="/images/logo.png"
-            alt="main logo"
-          />
-          <h1 class="title title--header">
-            <img
-              class="title__img"
-              src="/images/dreamjapan.svg"
-              alt="main title"
-            />
-            <span class="title__hidden">dream japan</span>
-          </h1>
-        </div>
+    <header>
+      <div id="navSmallCtr" class="nav__ctr nav__ctr--s">
+        <nav id="navSmallScreen" class="nav nav--smallScreen text--l">
+          <ul class="nav-list--small__wrapper">
+            <li>
+              <a
+                href="#home"
+                class="nav-list nav-list--small content-change-on-hover"
+                style="--content: 'ホーム'"
+                onclick="ScrollToHomePage()"
+                >home</a
+              >
+            </li>
+            <li>
+              <a
+                href="#detail"
+                class="nav-list nav-list--small content-change-on-hover"
+                style="--content: 'イベント詳細'"
+                onclick="ScrollToHomePage()"
+                >event detail</a
+              >
+            </li>
+            <li>
+              <a
+                href="#about"
+                class="nav-list nav-list--small content-change-on-hover"
+                style="--content: 'ドリームジャパンとは？'"
+                >what's dream japan?</a
+              >
+            </li>
+            <li>
+              <a
+                href="#dreamers"
+                class="nav-list nav-list--small content-change-on-hover"
+                style="--content: '夢追人'"
+                >dreamers</a
+              >
+            </li>
+            <li>
+              <a
+                href="#others"
+                class="nav-list nav-list--small content-change-on-hover"
+                style="--content: 'その他'"
+                >others</a
+              >
+            </li>
+            <li>
+              <a
+                href="#venue"
+                class="nav-list nav-list--small content-change-on-hover"
+                style="--content: '会場'"
+                >venue</a
+              >
+            </li>
+            <li>
+              <a
+                href="#contact"
+                class="nav-list nav-list--small content-change-on-hover"
+                style="--content: '問い合わせ'"
+                >contact</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="hamburger__ctr">
         <button
           id="navToggleBtn"
-          class="hamburger"
+          class="hamburger hamburger--header"
           type="button"
           aria-label="open navigation menu"
         >
@@ -43,106 +85,84 @@
         </button>
       </div>
     </header>
-    <nav id="navSmallScreen" class="nav nav--smallScreen">
-      <ul class="nav--smallScreen__wrapper">
-        <li>
-          <a
-            href="#home"
-            class="nav-list nav-list--small content-change-on-hover"
-            style="--content: 'ホーム'"
-            onclick="ScrollToHomePage()"
-            >home</a
-          >
-        </li>
-        <li>
-          <a
-            href="#about"
-            class="nav-list nav-list--small content-change-on-hover"
-            style="--content: '私たちについて'"
-            >about us</a
-          >
-        </li>
-        <li>
-          <a
-            href="#dreamers"
-            class="nav-list nav-list--small content-change-on-hover"
-            style="--content: '夢追人'"
-            >dreamers</a
-          >
-        </li>
-        <li>
-          <a
-            href="#others"
-            class="nav-list nav-list--small content-change-on-hover"
-            style="--content: 'その他'"
-            >others</a
-          >
-        </li>
-        <li>
-          <a
-            href="#venue"
-            class="nav-list nav-list--small content-change-on-hover"
-            style="--content: '会場'"
-            >venue</a
-          >
-        </li>
-        <li>
-          <a
-            href="#contact"
-            class="nav-list nav-list--small content-change-on-hover"
-            style="--content: '問い合わせ'"
-            >contact</a
-          >
-        </li>
-      </ul>
-    </nav>
-    <div id="home" class="foreground foreground--home">
-      <section class="home__ctr">
-        <div class="home__logo-wrapper">
-          <img src="/images/logo.png" alt="logo" class="logo home__logo" />
+
+    <main class="">
+      <div class="home__ctr">
+        <section id="home" class="section section--home">
           <img
-            src="/images/dreamjapan.svg"
-            alt="title"
-            class="title home__title"
+            src="/images/logo.png"
+            alt="logo"
+            class="logo logo--home"
+            width="15"
+            height="12"
+            decoding="async"
           />
-        </div>
-        <div class="home__text-wrapper">
-          <p class="home__text--date">16 DEC 13:00 - 17:00</p>
-          <p>
-            <a class="home__text--place" href="#venue">
-              33 Wadeson St, E2 9DR
-            </a>
+          <h1 class="title title--home">
+            <span class="hidden">dream japan</span>
+            <span
+              class="txt--rotate"
+              data-period="2000"
+              data-rotate="dream japan,ドリーム ジャパン"
+            ></span>
+          </h1>
+        </section>
+      </div>
+      <section id="detail" class="section section--detail">
+        <h2 class="section__title">japanese dream festival</h2>
+        <div>
+          <p class="text--m text--center">
+            16 DEC <span class="avoidwrap">13:00 - 17:00</span>
           </p>
+          <a class="text--m text--center detail__place" href="#venue">
+            33 Wadeson St, <span class="avoidwrap">E2 9DR</span>
+          </a>
+        </div>
+        <div class="detail__ticket">
+          <div class="ticket-price__ctr">
+            <p class="">ticket: 8£</p>
+            <p class="text--m">5£(advance ticket)</p>
+          </div>
           <a
-            class="ticket"
+            class="ticket text--m"
             href="https://www.eventbrite.com/e/dream-japanjapanese-dream-festival-tickets-747954621407?aff=oddtdtcreator"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="go to advance ticket purchase site"
           >
             <span> get ticket</span>
           </a>
         </div>
       </section>
-    </div>
-    <main class="foreground foreground--main">
       <section id="about" class="section">
-        <h2 class="section__title">about us</h2>
+        <h2 class="section__title">
+          what's <span class="avoidwrap">dream japan?</span>
+        </h2>
         <div class="section__content">
-          <div class="about__content--about">
-            <p>
+          <div class="content__wrapper">
+            <p class="">
               there are many Japanese in abroad with
               <strong>big energy</strong> and <strong>dreams</strong>. but there
               is no opportunity to show their dreams to anybody. to support
-              their dreams, we made this <strong>DREAM JAPAN</strong>
+              their dreams, we made this
+              <strong class="text--upper">DREAM JAPAN</strong>
               we connect those dreams and show you Japanese passion and dreams
               through this festival.
             </p>
           </div>
-          <div class="about__content--logo">
+        </div>
+        <div class="section__content">
+          <div class="content__wrapper">
             <img
-              class="logo logo--about"
+              class="logo logo-about"
               src="/images/logo.png"
               alt="main logo"
+              width="15"
+              height="12"
+              decoding="async"
             />
-            <p class="about__content--logo__text">
+          </div>
+          <div class="content__wrapper">
+            <p class="text--center text--half">
               Our logo symbolizes the unity and collaboration of individuals,
               each with their unique dreams.The holding hands emphasizes the
               spirit of teamwork and cooperation. Through our distinctive logo,
@@ -152,279 +172,332 @@
           </div>
         </div>
       </section>
-      <section id="dreamers" class="section">
+      <section id="dreamers" class="section section--dreamers">
         <h2 class="section__title">dreamers</h2>
         <div class="section__content">
-          <div class="dreamers__card carta">
-            <div class="dreamers__card__content--top">
-              <div class="dreamers__card__title-wrap">
-                <h3 class="dreamers__card__title">
-                  <span class="dreamers__card__title__first">L</span>ua
-                  <span class="dreamers__card__title__sub"
-                    >-imperfect beauty-</span
-                  >
+          <div class="content__wrapper">
+            <div class="dreamers__card">
+              <div class="dreamers__card__title__wrapper">
+                <h3 class="dreamers__card__title text--center">
+                  <span class="title--first-letter">l</span>ua
+                  <span class="avoidwrap">-imperfect beauty-</span>
                 </h3>
-                <p class="dreamers__card__title--jp">Lua -不完全な美-</p>
+                <p class="text--bold text--center text--red">
+                  Lua -不完全な美-
+                </p>
               </div>
-              <div class="dreamers__card__member-wrap">
-                <p class="dreamers__card__member__property">member</p>
-                <p class="dreamers__card__member">Alice</p>
-                <p class="dreamers__card__member">Reina</p>
+              <div class="dreamers__card__basic-info__wrapper">
+                <div class="basic-info__member-wrapper">
+                  <p class="basic-info__member__property text--m text--red">
+                    member
+                  </p>
+                  <p class="basic-info__member text--m text--red">Alice</p>
+                  <p class="basic-info__member text--m text--red">Reina</p>
+                </div>
+                <div class="basic-info__tag-wrapper">
+                  <p class="basic-info__tag text--m text--red">indigo dyeing</p>
+                  <p class="basic-info__tag text--m text--red">used clothes</p>
+                </div>
               </div>
-              <div class="dreamers__card__genre-wrap">
-                <p class="dreamers__card__genre">indigo dyeing</p>
-                <p class="dreamers__card__genre">used clothes</p>
+              <div class="dreamers__card__text__wrapper">
+                <p class="dreamers__card__text">
+                  An upcycled fashion brand created around the concept of
+                  imperfect beauty. Reinvigorating pre-loved clothing with
+                  Japanese traditional AIZOME dyeing.
+                </p>
               </div>
-            </div>
-            <div class="dreamers__card__content-bottom">
-              <p class="dreamers__card__content__text">
-                An upcycled fashion brand created around the concept of
-                imperfect beauty. Reinvigorating pre-loved clothing with
-                Japanese traditional AIZOME dyeing.
-              </p>
-            </div>
-            <div class="dreamers__card__picture carta">
-              <div class="dreamers__card__title__first">L</div>
-              <img
-                class="dreamers__card__picture__img"
-                src="images/avator/lua.png"
-                alt="member avatar"
-              />
+              <div class="dreamers__card__avatar___wrapper">
+                <img
+                  class="dreamers__card__avatar"
+                  src="images/avator/lua.png"
+                  alt="member avatar"
+                  width="4"
+                  height="5"
+                  decoding="async"
+                  loading="lazy"
+                />
+              </div>
             </div>
           </div>
-          <div class="dreamers__card carta">
-            <div class="dreamers__card__content--top">
-              <div class="dreamers__card__title-wrap">
-                <h3 class="dreamers__card__title">
-                  <span class="dreamers__card__title__first">C</span>afe Yu-Ke
+          <div class="content__wrapper">
+            <div class="dreamers__card">
+              <div class="dreamers__card__title__wrapper">
+                <h3 class="dreamers__card__title text--center">
+                  <span class="title--first-letter">c</span>afe Yu-Ke
                 </h3>
-                <p class="dreamers__card__title--jp"></p>
+                <p class="text--bold text--center text--red"></p>
               </div>
-              <div class="dreamers__card__member-wrap">
-                <p class="dreamers__card__member__property">member</p>
-                <p class="dreamers__card__member">Yusuke</p>
-                <p class="dreamers__card__member">Keshiro</p>
+              <div class="dreamers__card__basic-info__wrapper">
+                <div class="basic-info__member-wrapper">
+                  <p class="basic-info__member__property text--m text--red">
+                    member
+                  </p>
+                  <p class="basic-info__member text--m text--red">Yusuke</p>
+                  <p class="basic-info__member text--m text--red">Alice</p>
+                </div>
+                <div class="basic-info__tag-wrapper">
+                  <p class="basic-info__tag text--m text--red">coffee</p>
+                  <p class="basic-info__tag text--m text--red">kinako</p>
+                </div>
               </div>
-              <div class="dreamers__card__genre-wrap">
-                <p class="dreamers__card__genre">coffee</p>
-                <p class="dreamers__card__genre">matcha</p>
-                <p class="dreamers__card__genre">kinako</p>
+              <div class="dreamers__card__text__wrapper">
+                <p class="dreamers__card__text">
+                  We are Japanese style coffee shop serves high quality coffee
+                  Latte, Matcha, Kuromitsu kinako.\n\nWe hope you have a
+                  wonderful day.
+                </p>
               </div>
-            </div>
-            <div class="dreamers__card__content-bottom">
-              <p class="dreamers__card__content__text">
-                We are Japanese style coffee shop serves high quality coffee
-                Latte, Matcha, Kuromitsu kinako.\n\nWe hope you have a wonderful
-                day.
-              </p>
-            </div>
-            <div class="dreamers__card__picture carta">
-              <div class="dreamers__card__title__first">C</div>
-              <img
-                class="dreamers__card__picture__img"
-                src="images/avator/cafeYuke.png"
-                alt="member avatar"
-              />
+              <div class="dreamers__card__avatar___wrapper">
+                <img
+                  class="dreamers__card__avatar"
+                  src="images/avator/cafeYuke.png"
+                  alt="member avatar"
+                  width="4"
+                  height="5"
+                  decoding="async"
+                  loading="lazy"
+                />
+              </div>
             </div>
           </div>
-          <div class="dreamers__card carta">
-            <div class="dreamers__card__content--top">
-              <div class="dreamers__card__title-wrap">
-                <h3 class="dreamers__card__title">
-                  <span class="dreamers__card__title__first">B</span>eer is the
-                  Best
+          <div class="content__wrapper">
+            <div class="dreamers__card">
+              <div class="dreamers__card__title__wrapper">
+                <h3 class="dreamers__card__title text--center">
+                  <span class="title--first-letter">b</span>eer is the best
                 </h3>
-                <p class="dreamers__card__title--jp"></p>
+                <p class="text--bold text--center text--red"></p>
               </div>
-              <div class="dreamers__card__member-wrap">
-                <p class="dreamers__card__member__property">member</p>
-                <p class="dreamers__card__member">Masashi</p>
+              <div class="dreamers__card__basic-info__wrapper">
+                <div class="basic-info__member-wrapper">
+                  <p class="basic-info__member__property text--m text--red">
+                    member
+                  </p>
+                  <p class="basic-info__member text--m text--red">Masashi</p>
+                </div>
+                <div class="basic-info__tag-wrapper">
+                  <p class="basic-info__tag text--m text--red">homemade</p>
+                  <p class="basic-info__tag text--m text--red">beer</p>
+                </div>
               </div>
-              <div class="dreamers__card__genre-wrap">
-                <p class="dreamers__card__genre">homemade</p>
-                <p class="dreamers__card__genre">beer</p>
+              <div class="dreamers__card__text__wrapper">
+                <p class="dreamers__card__text">
+                  I made a homemade ale beer that use a lot of aroma hops.
+                  Please enjoy the flavor from hops.
+                </p>
               </div>
-            </div>
-            <div class="dreamers__card__content-bottom">
-              <p class="dreamers__card__content__text">
-                I made a homemade ale beer that use a lot of aroma hops. Please
-                enjoy the flavor from hops.
-              </p>
-            </div>
-            <div class="dreamers__card__picture carta">
-              <div class="dreamers__card__title__first">B</div>
-              <img
-                class="dreamers__card__picture__img"
-                src="images/avator/BeerIsTheBest.png"
-                alt="member avatar"
-              />
+              <div class="dreamers__card__avatar___wrapper">
+                <img
+                  class="dreamers__card__avatar"
+                  src="images/avator/BeerIsTheBest.png"
+                  alt="member avatar"
+                  width="4"
+                  height="5"
+                  decoding="async"
+                  loading="lazy"
+                />
+              </div>
             </div>
           </div>
-          <div class="dreamers__card carta">
-            <div class="dreamers__card__content--top">
-              <div class="dreamers__card__title-wrap">
-                <h3 class="dreamers__card__title">
-                  <span class="dreamers__card__title__first">M</span>atch with
-                  Matcha
+          <div class="content__wrapper">
+            <div class="dreamers__card">
+              <div class="dreamers__card__title__wrapper">
+                <h3 class="dreamers__card__title text--center">
+                  <span class="title--first-letter">m</span>atch with matcha
                 </h3>
-                <p class="dreamers__card__title--jp"></p>
+                <p class="text--bold text--center text--red"></p>
               </div>
-              <div class="dreamers__card__member-wrap">
-                <p class="dreamers__card__member__property">member</p>
-                <p class="dreamers__card__member">Miku</p>
-                <p class="dreamers__card__member">Kaho</p>
+              <div class="dreamers__card__basic-info__wrapper">
+                <div class="basic-info__member-wrapper">
+                  <p class="basic-info__member__property text--m text--red">
+                    member
+                  </p>
+                  <p class="basic-info__member text--m text--red">Miku</p>
+                  <p class="basic-info__member text--m text--red">Kaho</p>
+                </div>
+                <div class="basic-info__tag-wrapper">
+                  <p class="basic-info__tag text--m text--red">matcha</p>
+                  <p class="basic-info__tag text--m text--red">experience</p>
+                </div>
               </div>
-              <div class="dreamers__card__genre-wrap">
-                <p class="dreamers__card__genre">matcha</p>
-                <p class="dreamers__card__genre">experience</p>
+              <div class="dreamers__card__text__wrapper">
+                <p class="dreamers__card__text">
+                  Through the matcha experience, we will provide guidance on how
+                  to enjoy matcha and introduce the unique Japanese customs
+                  associated with it.
+                </p>
               </div>
-            </div>
-            <div class="dreamers__card__content-bottom">
-              <p class="dreamers__card__content__text">
-                Through the matcha experience, we will provide guidance on how
-                to enjoy matcha and introduce the unique Japanese customs
-                associated with it.
-              </p>
-            </div>
-            <div class="dreamers__card__picture carta">
-              <div class="dreamers__card__title__first">M</div>
-              <img
-                class="dreamers__card__picture__img"
-                src="images/avator/matchWithMatcha.png"
-                alt="member avatar"
-              />
+              <div class="dreamers__card__avatar___wrapper">
+                <img
+                  class="dreamers__card__avatar"
+                  src="images/avator/matchWithMatcha.png"
+                  alt="member avatar"
+                  width="4"
+                  height="5"
+                  decoding="async"
+                  loading="lazy"
+                />
+              </div>
             </div>
           </div>
-          <div class="dreamers__card carta">
-            <div class="dreamers__card__content--top">
-              <div class="dreamers__card__title-wrap">
-                <h3 class="dreamers__card__title">
-                  <span class="dreamers__card__title__first">E</span>nchanted
-                  flower
+          <div class="content__wrapper">
+            <div class="dreamers__card">
+              <div class="dreamers__card__title__wrapper">
+                <h3 class="dreamers__card__title text--center">
+                  <span class="title--first-letter">e</span>nchanted flower
                 </h3>
-                <p class="dreamers__card__title--jp"></p>
+                <p class="text--bold text--center text--red"></p>
               </div>
-              <div class="dreamers__card__member-wrap">
-                <p class="dreamers__card__member__property">member</p>
-                <p class="dreamers__card__member">Mika</p>
+              <div class="dreamers__card__basic-info__wrapper">
+                <div class="basic-info__member-wrapper">
+                  <p class="basic-info__member__property text--m text--red">
+                    member
+                  </p>
+                  <p class="basic-info__member text--m text--red">Mika</p>
+                </div>
+                <div class="basic-info__tag-wrapper">
+                  <p class="basic-info__tag text--m text--red">accessory</p>
+                  <p class="basic-info__tag text--m text--red">flower</p>
+                </div>
               </div>
-              <div class="dreamers__card__genre-wrap">
-                <p class="dreamers__card__genre">accessory</p>
-                <p class="dreamers__card__genre">flower</p>
+              <div class="dreamers__card__text__wrapper">
+                <p class="dreamers__card__text">
+                  Accessories and art made with real flowers. We also hold
+                  workshops and hair arrangement. Enjoy the flowers.
+                </p>
               </div>
-            </div>
-            <div class="dreamers__card__content-bottom">
-              <p class="dreamers__card__content__text">
-                Accessories and art made with real flowers. We also hold
-                workshops and hair arrangement. Enjoy the flowers.
-              </p>
-            </div>
-            <div class="dreamers__card__picture carta">
-              <div class="dreamers__card__title__first">E</div>
-              <img
-                class="dreamers__card__picture__img"
-                src="images/avator/flower.png"
-                alt="member avatar"
-              />
+              <div class="dreamers__card__avatar___wrapper">
+                <img
+                  class="dreamers__card__avatar"
+                  src="images/avator/flower.png"
+                  alt="member avatar"
+                  width="4"
+                  height="5"
+                  decoding="async"
+                  loading="lazy"
+                />
+              </div>
             </div>
           </div>
-          <div class="dreamers__card carta">
-            <div class="dreamers__card__content--top">
-              <div class="dreamers__card__title-wrap">
-                <h3 class="dreamers__card__title">
-                  <span class="dreamers__card__title__first">W</span>A couleur
+          <div class="content__wrapper">
+            <div class="dreamers__card">
+              <div class="dreamers__card__title__wrapper">
+                <h3 class="dreamers__card__title text--center">
+                  <span class="title--first-letter">w</span>A with couleur
                 </h3>
-                <p class="dreamers__card__title--jp">ワ　クルール</p>
+                <p class="text--bold text--center text--red">ワ クルール</p>
               </div>
-              <div class="dreamers__card__member-wrap">
-                <p class="dreamers__card__member__property">member</p>
-                <p class="dreamers__card__member">Hiro</p>
+              <div class="dreamers__card__basic-info__wrapper">
+                <div class="basic-info__member-wrapper">
+                  <p class="basic-info__member__property text--m text--red">
+                    member
+                  </p>
+                  <p class="basic-info__member text--m text--red">Hiro</p>
+                </div>
+                <div class="basic-info__tag-wrapper">
+                  <p class="basic-info__tag text--m text--red">wagshi</p>
+                  <p class="basic-info__tag text--m text--red">
+                    confectioneries
+                  </p>
+                </div>
               </div>
-              <div class="dreamers__card__genre-wrap">
-                <p class="dreamers__card__genre">wagashi</p>
-                <p class="dreamers__card__genre">confectioneries</p>
+              <div class="dreamers__card__text__wrapper">
+                <p class="dreamers__card__text">
+                  After 9 years training in Japan, now a pastry chef in London,
+                  aspiring to start my own Japanese confectionery brand.
+                </p>
               </div>
-            </div>
-            <div class="dreamers__card__content-bottom">
-              <p class="dreamers__card__content__text">
-                After 9 years training in Japan, now a pastry chef in London,
-                aspiring to start my own Japanese confectionery brand.
-              </p>
-            </div>
-            <div class="dreamers__card__picture carta">
-              <div class="dreamers__card__title__first">W</div>
-              <img
-                class="dreamers__card__picture__img"
-                src="images/avator/waCouleur.png"
-                alt="member avatar"
-              />
+              <div class="dreamers__card__avatar___wrapper">
+                <img
+                  class="dreamers__card__avatar"
+                  src="images/avator/waCouleur.png"
+                  alt="member avatar"
+                  width="4"
+                  height="5"
+                  decoding="async"
+                  loading="lazy"
+                />
+              </div>
             </div>
           </div>
-          <div class="dreamers__card carta">
-            <div class="dreamers__card__content--top">
-              <div class="dreamers__card__title-wrap">
-                <h3 class="dreamers__card__title">
-                  <span class="dreamers__card__title__first">M</span>IRALIEN
-                  WORLD
-                  <span class="dreamers__card__title__sub">-REBORN-</span>
+          <div class="content__wrapper">
+            <div class="dreamers__card">
+              <div class="dreamers__card__title__wrapper">
+                <h3 class="dreamers__card__title text--center">
+                  <span class="title--first-letter">m</span>IRALIEN WORLD
+                  <span class="avoidwrap">-REBORN-</span>
                 </h3>
-                <p class="dreamers__card__title--jp"></p>
+                <p class="text--bold text--center text--red"></p>
               </div>
-              <div class="dreamers__card__member-wrap">
-                <p class="dreamers__card__member__property">member</p>
-                <p class="dreamers__card__member">Kanata</p>
+              <div class="dreamers__card__basic-info__wrapper">
+                <div class="basic-info__member-wrapper">
+                  <p class="basic-info__member__property text--m text--red">
+                    member
+                  </p>
+                  <p class="basic-info__member text--m text--red">Mirei</p>
+                </div>
+                <div class="basic-info__tag-wrapper">
+                  <p class="basic-info__tag text--m text--red">art</p>
+                  <p class="basic-info__tag text--m text--red">creative</p>
+                </div>
               </div>
-              <div class="dreamers__card__genre-wrap">
-                <p class="dreamers__card__genre">art</p>
-                <p class="dreamers__card__genre">creative</p>
+              <div class="dreamers__card__text__wrapper">
+                <p class="dreamers__card__text">
+                  Spreading joy through art, I aim for a butterfly
+                  effect—initiating my authentic artist's journey, connecting
+                  with the world, and sharing global happiness. 🦋🌏✨
+                </p>
               </div>
-            </div>
-            <div class="dreamers__card__content-bottom">
-              <p class="dreamers__card__content__text">
-                Spreading joy through art, I aim for a butterfly
-                effect—initiating my authentic artist's journey, connecting with
-                the world, and sharing global happiness. 🦋🌏✨
-              </p>
-            </div>
-            <div class="dreamers__card__picture carta">
-              <div class="dreamers__card__title__first">S</div>
-              <img
-                class="dreamers__card__picture__img"
-                src="images/avator/Miralien_world.png"
-                alt="member avatar"
-              />
+              <div class="dreamers__card__avatar___wrapper">
+                <img
+                  class="dreamers__card__avatar"
+                  src="images/avator/Miralien_world.png"
+                  alt="member avatar"
+                  width="4"
+                  height="5"
+                  decoding="async"
+                  loading="lazy"
+                />
+              </div>
             </div>
           </div>
-          <div class="dreamers__card carta">
-            <div class="dreamers__card__content--top">
-              <div class="dreamers__card__title-wrap">
-                <h3 class="dreamers__card__title">
-                  <span class="dreamers__card__title__first">S</span>TRING
+          <div class="content__wrapper">
+            <div class="dreamers__card">
+              <div class="dreamers__card__title__wrapper">
+                <h3 class="dreamers__card__title text--center">
+                  <span class="title--first-letter text--upper">s</span>tring
                 </h3>
-                <p class="dreamers__card__title--jp"></p>
+                <p class="text--bold text--center text--red"></p>
               </div>
-              <div class="dreamers__card__member-wrap">
-                <p class="dreamers__card__member__property">member</p>
-                <p class="dreamers__card__member">Kanata</p>
+              <div class="dreamers__card__basic-info__wrapper">
+                <div class="basic-info__member-wrapper">
+                  <p class="basic-info__member__property text--m text--red">
+                    member
+                  </p>
+                  <p class="basic-info__member text--m text--red">Kanata</p>
+                </div>
+                <div class="basic-info__tag-wrapper">
+                  <p class="basic-info__tag text--m text--red">art</p>
+                  <p class="basic-info__tag text--m text--red">creative</p>
+                </div>
               </div>
-              <div class="dreamers__card__genre-wrap">
-                <p class="dreamers__card__genre">art</p>
-                <p class="dreamers__card__genre">creative</p>
+              <div class="dreamers__card__text__wrapper">
+                <p class="dreamers__card__text">
+                  Presenting creativity and artistry in a broad, deep, and
+                  profound manner.
+                </p>
               </div>
-            </div>
-            <div class="dreamers__card__content-bottom">
-              <p class="dreamers__card__content__text">
-                Presenting creativity and artistry in a broad, deep, and
-                profound manner.
-              </p>
-            </div>
-            <div class="dreamers__card__picture carta">
-              <div class="dreamers__card__title__first">S</div>
-              <img
-                class="dreamers__card__picture__img"
-                src="images/avator/kanata.png"
-                alt="member avatar"
-              />
+              <div class="dreamers__card__avatar___wrapper">
+                <img
+                  class="dreamers__card__avatar"
+                  src="images/avator/kanata.png"
+                  alt="member avatar"
+                  width="4"
+                  height="5"
+                  decoding="async"
+                  loading="lazy"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -432,30 +505,56 @@
       <section id="others" class="section">
         <h2 class="section__title">others</h2>
         <div class="section__content">
-          <div class="coming-soon__wrapper"><h3>coming soon</h3></div>
+          <div class="content__wrapper">
+            <h3 class="text--upper">food</h3>
+            <ul class="others__content--list">
+              <li class="others__content--list__content">takoyaki</li>
+              <li class="others__content--list__content">japanese dumpling</li>
+              <li class="others__content--list__content">onigiri</li>
+              <li class="others__content--list__content">japanese snacks</li>
+              <li class="others__content--list__content">
+                amasake(sweet sake)
+              </li>
+            </ul>
+          </div>
+          <div class="content__wrapper">
+            <h3 class="text--upper">show</h3>
+            <ul class="others__content--list">
+              <li class="others__content--list__content">Giulia (singer)</li>
+            </ul>
+          </div>
+          <div class="content__wrapper">
+            <h3 class="text--upper">art</h3>
+            <ul class="others__content--list">
+              <li class="others__content--list__content">
+                origami (japanese paper craft work)
+              </li>
+            </ul>
+          </div>
         </div>
       </section>
       <section id="venue" class="section">
         <h2 class="section__title">venue</h2>
-        <div class="section__content venue__content">
-          <div>
-            <h3>address</h3>
+        <div class="section__content">
+          <div class="content__wrapper">
+            <h3 class="text--upper">address</h3>
             <address>33 Wadeson Street, London, UK</address>
             <a
-              class="address__link"
+              class="link"
               href="https://maps.app.goo.gl/nRf53TmCJbMfQuyr7"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="open the venue address with google map"
             >
               open with google map</a
             >
           </div>
-          <div>
-            <h3>access</h3>
+          <div class="content__wrapper">
+            <h3 class="text--upper">access</h3>
             <p>5 minutes from Cambridge Heath Station</p>
           </div>
           <iframe
-            class="map"
+            class="map content__wrapper"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4963.703527239698!2d-0.06061495229588279!3d51.53427866112459!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761cdd080a9561%3A0x29f92d76465b9b6f!2s33%20Wadeson%20St%2C%20London%20E2%209DR%2C%20UK!5e0!3m2!1sen!2sjp!4v1699720277254!5m2!1sen!2sjp"
             style="border: 0"
             title="Google Map around the Venue"
@@ -467,32 +566,33 @@
       </section>
       <section id="contact" class="section">
         <h2 class="section__title">contact</h2>
-        <div class="section__content contact__content">
-          <p class="">
-            We are now accepting questions only via direct messages on
-            Instagram.
-          </p>
-          <a
-            class="button"
-            href="https://instagram.com/dreamjapan_17.16.december?igshid=MXd5d2xtdmt0MDA4OQ=="
-          >
-            <span>instagram</span></a
-          >
+        <div class="section__content">
+          <div class="content__wrapper">
+            <p>
+              We are now accepting questions only via direct messages on
+              <a
+                href="https://www.instagram.com/dreamjapan_17.16.december?igshid=MzMyNGUyNmU2YQ%3D%3D&utm_source=qr"
+                class="link"
+                aria-label="go to dream japan official instagram account page"
+                >Instagram</a
+              >.
+            </p>
+          </div>
         </div>
       </section>
     </main>
-    <div class="foreground foreground--top">
-      <div class="circle"></div>
-    </div>
     <a
-      class="ticket ticket--side"
+      class="ticket--side"
       href="https://www.eventbrite.com/e/dream-japanjapanese-dream-festival-tickets-747954621407?aff=oddtdtcreator"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="go to advance ticket purchase site"
     >
-      <span> get ticket</span>
+      <span class="ticket--side__label">get ticket</span>
     </a>
     <footer>
       <p class="footer__copyright">&copy; Copyright 2023, Dream Japan</p>
     </footer>
-    <script src="./index.js" defer></script>
+    <script src="./index copy.js" defer></script>
   </body>
 </html>
