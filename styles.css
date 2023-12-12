@@ -401,6 +401,30 @@ main {
 .others__content--list__content::before {
     content: '-';
 }
+.others__popup-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 70%;
+    height: auto;
+    aspect-ratio: 1;
+    background-color: rgba(var(--c--primary),1);
+    border-radius:  50%;
+    display: block;
+}
+.others__popup-img {
+    position: absolute;
+    transform: rotate(20deg);
+    top: 45%;
+    left: 50%;
+    width: 50%;
+    height: auto;
+    aspect-ratio: 5 / 6;
+    background-image: url('images/guilia.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
 
     /* Venue */
 .map {
@@ -411,7 +435,7 @@ main {
 
 /* FOOTER */
 footer {
-    height: 32px;
+    height: 50dvh;
 }
 .footer__copyright {
     text-align: center;
@@ -589,6 +613,7 @@ p.text--red {
     color: rgba(var(--c--primary), 1);
 }
 .ticket--side {
+    z-index: var(--z--popup);
     position: fixed;
     bottom: calc(var(--m--section)/2);
     left: calc(var(--p--base)/2);
@@ -600,6 +625,7 @@ p.text--red {
     background-size: contain;
     text-align: center;
     animation: pulseScale 3s infinite ease-in-out;
+    transition: all var(--duration--base);
 }
 .ticket--side__label {
     position: absolute;
@@ -613,4 +639,10 @@ p.text--red {
     color: rgba(var(--c--bg), 1);
     font-size: clamp(calc(var(--f-size--text)*0.8),calc(100dvw/30), var(--f-size--text));
     line-height: clamp(calc(var(--f-size--text)*0.8),calc(100dvw/30), calc(var(--f-size--text)));
+}
+body.nav .ticket--side {
+    background-image: url('images/plum--white.svg');
+}
+body.nav .ticket--side__label {
+    color: rgba(var(--c--primary), 1);
 }
