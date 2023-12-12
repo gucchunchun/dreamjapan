@@ -95,7 +95,7 @@ h4 {
 }
 p, h1, h2, h3, h4 {
     color: rgba(var(--c--text), 0.9);
-    font-family: "brush", sans-serif;
+    font-family: "brush", san;
 }
 
 /* UTILITY ANIMATION */
