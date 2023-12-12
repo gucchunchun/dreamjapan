@@ -1,143 +1,83 @@
 // To toggle navigation menu
-const navToggleBtn = document.querySelector('#navToggleBtn');
-const navSmallScreen = document.querySelector('#navSmallScreen');
+const navToggleBtn = document.getElementById('navToggleBtn');
+const navSmallCtr = document.getElementById('navSmallCtr');
 const navSmallLists = document.querySelectorAll('.nav-list--small');
 
 function openNavMenu() {
     navToggleBtn.classList.add('animated');
     navToggleBtn.classList.add('active');
-    navSmallScreen.classList.add('active');
+    navSmallCtr.classList.add('active');
     navToggleBtn.setAttribute('aria-label', 'close navigation menu');
     navToggleBtn.removeEventListener('click', openNavMenu);
     navToggleBtn.addEventListener('click', closeNavMenu);
     navSmallLists.forEach(list => list.addEventListener('click', closeNavMenu));
 }
 function closeNavMenu() {
-    navToggleBtn.classList.remove('animated');
     navToggleBtn.classList.remove('active');
-    navSmallScreen.classList.remove('active');
+    navSmallCtr.classList.remove('active');
     navToggleBtn.setAttribute('aria-label', 'open navigation menu');
     navToggleBtn.removeEventListener('click', closeNavMenu);
     navToggleBtn.addEventListener('click', openNavMenu);
     navSmallLists.forEach(list => list.removeEventListener('click', closeNavMenu));
 }
-
 navToggleBtn.addEventListener('click', openNavMenu);
 
-// To scroll to Home Page(fixed, scrollTo)
-function ScrollToHomePage() {
-    window.scrollTo(0, 0);
-}
-
-// To manage animation on elements' intersection with user screen
-const body = document.querySelector('body');
-const sectionTitle = document.querySelector('.section__title');
-const Sections = document.querySelectorAll('.section');
-const Contents = document.querySelectorAll('.content__wrapper');
-const dreamersCards = document.querySelectorAll('.dreamers__card');
-
-// get sectionTitle bottom value
-const sectionTitleRect = sectionTitle.getBoundingClientRect();
-const sectionTitleTop= sectionTitleRect.top;
-const sectionTitleBottom = sectionTitleRect.bottom;
-let windowHeight = window.innerHeight;
-
-const scrollSectionOptions = {
-    rootMargin: `0px 0px ${sectionTitleBottom - windowHeight}px 0px`,
-    threshold: 0
-}
-let scrollOutContentOptions = {
-    rootMargin: `0px 0px ${sectionTitleBottom - windowHeight}px 0px`,
-    threshold: 0
-}
-let scrollInContentOptions = {
-    rootMargin: `0px 0px ${windowHeight / -2}px 0px`,
-    threshold: 0
-}
-
-
-const scrollSectionCallback = (entries) => {
-    const currentSection = {target: null, ratio: 0};
-    
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            console.log(entry.target);
-            entry.target.classList.remove('active');
-            console.log(entry.target);
-            if (currentSection.ratio < entry.intersectionRatio) {
-                currentSection.target = entry.target;
-                currentSection.ratio = entry.intersectionRatio;
-            }
-        }else {
-            entry.target.classList.remove('active');
-        }
-    });
-    
-    if (currentSection.target) {
-        currentSection.target.classList.add('active');
+// Rotate Text (.txt--rotate)
+class TxtRotate {
+    constructor(el, toRotate, period) {
+        this.toRotate = toRotate;
+        this.el = el;
+        this.loopNum = 0;
+        this.period = parseInt(period, 10) || 2000;
+        this.txt = '';
+        this.isDeleting = false;
+    }
+    rotate() {
+        const i = this.loopNum % this.toRotate.length;
+        var fullTxt = this.toRotate[i];
+        fullTxt = fullTxt.replace(/\s/g, '<br>');
         
-        if (currentSection.target.id === 'home') {
-            body.classList.add('home');
+        if (this.isDeleting) {
+            this.txt = fullTxt.substring(0, this.txt.length - 1);
         } else {
-            body.classList.remove('home');
+            this.txt = fullTxt.substring(0, this.txt.length + 1);
         }
-    }
-};
-
-const scrollOutContentCallback = (entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.remove('active');
-        }  else {
-            entry.target.classList.add('active');
-        }
-    })
-}
-const scrollInContentCallback = (entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-        } else {
-            entry.target.classList.remove('active');
-        }
-    })
-}
-
-
-const scrollSectionObserver = new IntersectionObserver(scrollSectionCallback, scrollSectionOptions);
-let scrollOutContentObserver = new IntersectionObserver(scrollOutContentCallback, scrollOutContentOptions);
-let scrollInContentObserver = new IntersectionObserver(scrollInContentCallback, scrollInContentOptions);
-
-Sections.forEach(elem => {
-    scrollSectionObserver.observe(elem);
-})
-Contents.forEach(elem => {
-    scrollOutContentObserver.observe(elem);
-    scrollInContentObserver.observe(elem);
-})
-
-window.addEventListener('resize', ()=>{
-    windowHeight = window.innerHeight;
     
-    scrollOutContentOptions = {
-        rootMargin: `0px 0px ${sectionTitleBottom - windowHeight}px 0px`,
-        threshold: 0
+        // Check if the last character is '<', and adjust the displayed content accordingly
+        this.el.innerHTML = this.txt.endsWith('<') ? this.txt.slice(0, -1) : this.txt;
+    
+        var that = this;
+        var delta = 300;
+    
+        //while deleting (deleting speed value is set to twice as fast as showing text speed)
+        if (this.isDeleting) { delta /= 2; }
+    
+        // after showing full text
+        if (!this.isDeleting && this.txt === fullTxt) {
+          delta = this.period;
+          this.isDeleting = true;
+        } 
+        // after deleting
+        else if (this.isDeleting && this.txt === '') {
+          this.isDeleting = false;
+          this.loopNum++;
+          delta = 500;
+        //   this.el.style.color = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random()*255})`
+        }
+    
+        setTimeout(function() {
+          that.rotate();
+        }, delta);
+    };
+    
+}
+addEventListener('load', () => {
+    const RotateText = document.querySelector('.txt--rotate');
+    const toRotate = RotateText.getAttribute('data-rotate').split(',');
+    const period = RotateText.getAttribute('data-period');
+    if (toRotate) {
+        const Rotate = new TxtRotate(RotateText, toRotate, period);
+        Rotate.rotate();
     }
-    scrollInContentOptions = {
-        rootMargin: `0px 0px ${windowHeight / -2}px 0px`,
-        threshold: 0
-    }
-    scrollOutContentObserver = new IntersectionObserver(scrollOutContentCallback, scrollOutContentOptions);
-    scrollInContentObserver = new IntersectionObserver(scrollInContentCallback, scrollInContentOptions);
+});
 
-    Contents.forEach(elem => {
-        scrollOutContentObserver.observe(elem);
-        scrollInContentObserver.observe(elem);
-    })
-})
-
-// // dreamers card angle
-// let angle = -5;
-// for(let i = 0; i < numberOfDreamersCards; i++) {
-//     dreamersCards[i].style = `--angle: ${angle + Math.floor(Math.random()* 9) -7}deg`;
-// }
