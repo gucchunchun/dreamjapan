@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dream Japan Official Site</title>
+    <title>Dream Japan</title>
     <meta
       name="description"
       content="Dream Japan official site. Japanese culture event in London on 16 Dec 2023. "
@@ -21,7 +21,6 @@
                 href="#home"
                 class="nav-list nav-list--small content-change-on-hover"
                 style="--content: 'ホーム'"
-                onclick="ScrollToHomePage()"
                 >home</a
               >
             </li>
@@ -30,7 +29,6 @@
                 href="#detail"
                 class="nav-list nav-list--small content-change-on-hover"
                 style="--content: 'イベント詳細'"
-                onclick="ScrollToHomePage()"
                 >event detail</a
               >
             </li>
@@ -91,24 +89,46 @@
 
     <main class="">
       <div class="home__ctr">
-        <section id="home" class="section section--home">
-          <img
-            src="/images/logo.png"
-            alt="logo"
-            class="logo logo--home"
-            width="15"
-            height="12"
-            decoding="async"
-          />
-          <h1 class="title title--home">
-            <span class="hidden">dream japan</span>
-            <span
-              class="txt--rotate"
-              data-period="2000"
-              data-rotate="dream japan,ドリーム ジャパン"
-            ></span>
-          </h1>
-        </section>
+        <div class="home__animation">
+          <div class="home__animation__title-wrapper cube">
+            <div
+              class="home__animation__title text--xxl cube__face cube__face--front"
+            >
+              ドリーム ジャパン
+            </div>
+            <div
+              class="home__animation__title text--xxl cube__face cube__face--right"
+            >
+              dream japan
+            </div>
+          </div>
+        </div>
+        <div class="home__main">
+          <section id="home" class="section section--home">
+            <div class="section__content section__content--home">
+              <div class="home__logo__wrapper">
+                <img
+                  src="/images/logo.png"
+                  alt="logo"
+                  class="logo--home"
+                  width="15"
+                  height="12"
+                  decoding="async"
+                />
+              </div>
+              <div class="home__title__wrapper">
+                <h1 class="title title--home">
+                  <span class="">dream japan</span>
+                  <span
+                    class="text--rotate"
+                    data-period="2000"
+                    data-rotate="dream japan,ドリーム ジャパン"
+                  ></span>
+                </h1>
+              </div>
+            </div>
+          </section>
+        </div>
       </div>
       <section id="detail" class="section section--detail">
         <h2 class="section__title">japanese dream festival</h2>
@@ -122,7 +142,7 @@
         </div>
         <div class="detail__ticket">
           <div class="ticket-price__ctr">
-            <p class="">ticket: 8£</p>
+            <p class="text--dash">ticket: 8£</p>
             <p class="text--m">5£(advance ticket)</p>
           </div>
           <a
