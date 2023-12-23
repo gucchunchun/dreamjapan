@@ -33,7 +33,7 @@
     --f-size--l: 1.999rem;
     --f-size--xl: 2.827rem;
     --f-size--xxl: 3.998rem;
-    --f--line-height: 1.0;
+    --f--line-height: 1.5;
 
     --duration--landing: 2s;
     --duration--base: 0.5s;
@@ -286,10 +286,11 @@ main {
 }
 .home__ctr {
     --duration--title: 2s;
-    --duration--showHome: 3s;
+    --duration--showHome: 2s;
     --h--logo: 60%;
     width: 100dvw;
     height: 100dvh;
+    margin-bottom: var(--m--bottom);
 }
 .home__animation {
     position: absolute;
@@ -319,19 +320,22 @@ main {
     text-transform: uppercase;
 }
 .home__main {
-    width: 100%;
-    height: 100%;
+    width: 100dvw;
+    height: 100dvh;
     animation: var(--duration--showHome) clipPath var(--duration--title) forwards;
     background-color: rgba(var(--c--bg), 1);
 }
 .section--home {
+    height: 100dvh;
     margin-bottom: 0;
+    opacity: 0;
+    animation: var(--duration--showHome) showHome var(--duration--title) forwards;
 }
 .section__content--home {
     opacity: 0;
     animation: var(--duration--showHome) showHome var(--duration--title) forwards;
 }
-.home__logo__wrapper {
+.home__logo__ctr {
     width: 100%;
     height: var(--h--logo);
     display: flex;
