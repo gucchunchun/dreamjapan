@@ -348,9 +348,8 @@ main {
     max-width: 100%;
     height: auto;
     max-height: 100%;
-    flex: 0 0 auto;
 }
-.home__title__wrapper {
+.home__title__ctr {
     width: 100%;
     height: calc(100% - var(--h--logo));
 }
